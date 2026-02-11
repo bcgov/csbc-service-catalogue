@@ -1,4 +1,7 @@
+import Contributors from "./src/collections/Contributors";
+import Services from "./src/collections/Services";
 import Users from "./src/collections/Users";
+import Versions from "./src/collections/Versions";
 import { keycloakPlugin } from "./src/plugins/keycloak/keycloak.plugin";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
@@ -23,7 +26,7 @@ export default buildConfig({
     },
     user: Users.slug,
   },
-  collections: [Users],
+  collections: [Users, Services, Versions, Contributors],
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || "",

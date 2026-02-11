@@ -67,14 +67,25 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    services: Service;
+    versions: Version;
+    contributors: Contributor;
     users: User;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    services: {
+      versions: 'versions';
+      contributors: 'contributors';
+    };
+  };
   collectionsSelect: {
+    services: ServicesSelect<false> | ServicesSelect<true>;
+    versions: VersionsSelect<false> | VersionsSelect<true>;
+    contributors: ContributorsSelect<false> | ContributorsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -114,6 +125,214 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: string;
+  organizationId?: string | null;
+  name: string;
+  slug?: string | null;
+  /**
+   * This field is not visible to end users.
+   */
+  description?: string | null;
+  publishedVersion?: (string | null) | Version;
+  versions?: {
+    docs?: (string | Version)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  contributors?: {
+    docs?: (string | Contributor)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  /**
+   * Additional service configuration
+   */
+  settings?: {
+    /**
+     * Add Consent Documents by ID. Visit the Consent Manager to identify the Consent Document.
+     */
+    consent?:
+      | {
+          documentId: string;
+          id?: string | null;
+        }[]
+      | null;
+    delegate?: {
+      /**
+       * When enabled, applicants can authorize a delegate to help manage this service.
+       */
+      access?: boolean | null;
+    };
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "versions".
+ */
+export interface Version {
+  id: string;
+  service: string | Service;
+  status?: ('draft' | 'published' | 'archived') | null;
+  version?: number | null;
+  categories?:
+    | (
+        | 'culture'
+        | 'education'
+        | 'employment'
+        | 'family'
+        | 'financial'
+        | 'health'
+        | 'housing'
+        | 'legal'
+        | 'personal'
+        | 'social'
+      )[]
+    | null;
+  description?: {
+    short?: string | null;
+    long?: string | null;
+  };
+  /**
+   * Add applications for this service
+   */
+  applications?:
+    | (
+        | {
+            label?: string | null;
+            description?: string | null;
+            apiKey?: string | null;
+            formId?: string | null;
+            url?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'form';
+          }
+        | {
+            label?: string | null;
+            description?: string | null;
+            url?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'link';
+          }
+        | {
+            label?: string | null;
+            description?: string | null;
+            url?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'workflow';
+          }
+      )[]
+    | null;
+  /**
+   * Add contact methods for users to communicate about the service.
+   */
+  contactMethods?: {
+    address?:
+      | {
+          label: string;
+          description?: string | null;
+          addressOne: string;
+          addressTwo?: string | null;
+          city: string;
+          province: string;
+          country: string;
+          id?: string | null;
+        }[]
+      | null;
+    email?:
+      | {
+          label: string;
+          description?: string | null;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    fax?:
+      | {
+          label: string;
+          description?: string | null;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    phone?:
+      | {
+          label: string;
+          description?: string | null;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    web?:
+      | {
+          label: string;
+          description?: string | null;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Provide quick solutions to commonly asked questions.
+   */
+  faq?:
+    | {
+        question?: string | null;
+        answer?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Add resources which can provide more detailed information about the service.
+   */
+  resources?:
+    | {
+        label?: string | null;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  publishedAt?: string | null;
+  archivedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contributors".
+ */
+export interface Contributor {
+  id: string;
+  service: string | Service;
+  user: string | User;
+  role: 'owner' | 'editor' | 'viewer';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -149,10 +368,23 @@ export interface PayloadKv {
  */
 export interface PayloadLockedDocument {
   id: number;
-  document?: {
-    relationTo: 'users';
-    value: string | User;
-  } | null;
+  document?:
+    | ({
+        relationTo: 'services';
+        value: string | Service;
+      } | null)
+    | ({
+        relationTo: 'versions';
+        value: string | Version;
+      } | null)
+    | ({
+        relationTo: 'contributors';
+        value: string | Contributor;
+      } | null)
+    | ({
+        relationTo: 'users';
+        value: string | User;
+      } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
@@ -194,6 +426,166 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  id?: T;
+  organizationId?: T;
+  name?: T;
+  slug?: T;
+  description?: T;
+  publishedVersion?: T;
+  versions?: T;
+  contributors?: T;
+  settings?:
+    | T
+    | {
+        consent?:
+          | T
+          | {
+              documentId?: T;
+              id?: T;
+            };
+        delegate?:
+          | T
+          | {
+              access?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "versions_select".
+ */
+export interface VersionsSelect<T extends boolean = true> {
+  id?: T;
+  service?: T;
+  status?: T;
+  version?: T;
+  categories?: T;
+  description?:
+    | T
+    | {
+        short?: T;
+        long?: T;
+      };
+  applications?:
+    | T
+    | {
+        form?:
+          | T
+          | {
+              label?: T;
+              description?: T;
+              apiKey?: T;
+              formId?: T;
+              url?: T;
+              id?: T;
+              blockName?: T;
+            };
+        link?:
+          | T
+          | {
+              label?: T;
+              description?: T;
+              url?: T;
+              id?: T;
+              blockName?: T;
+            };
+        workflow?:
+          | T
+          | {
+              label?: T;
+              description?: T;
+              url?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  contactMethods?:
+    | T
+    | {
+        address?:
+          | T
+          | {
+              label?: T;
+              description?: T;
+              addressOne?: T;
+              addressTwo?: T;
+              city?: T;
+              province?: T;
+              country?: T;
+              id?: T;
+            };
+        email?:
+          | T
+          | {
+              label?: T;
+              description?: T;
+              value?: T;
+              id?: T;
+            };
+        fax?:
+          | T
+          | {
+              label?: T;
+              description?: T;
+              value?: T;
+              id?: T;
+            };
+        phone?:
+          | T
+          | {
+              label?: T;
+              description?: T;
+              value?: T;
+              id?: T;
+            };
+        web?:
+          | T
+          | {
+              label?: T;
+              description?: T;
+              value?: T;
+              id?: T;
+            };
+      };
+  content?: T;
+  faq?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  resources?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        id?: T;
+      };
+  publishedAt?: T;
+  archivedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contributors_select".
+ */
+export interface ContributorsSelect<T extends boolean = true> {
+  id?: T;
+  service?: T;
+  user?: T;
+  role?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
