@@ -223,6 +223,7 @@ export interface Version {
         | {
             label?: string | null;
             description?: string | null;
+            method?: ('GET' | 'POST') | null;
             url?: string | null;
             id?: string | null;
             blockName?: string | null;
@@ -502,6 +503,7 @@ export interface VersionsSelect<T extends boolean = true> {
           | {
               label?: T;
               description?: T;
+              method?: T;
               url?: T;
               id?: T;
               blockName?: T;

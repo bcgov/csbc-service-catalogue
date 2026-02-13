@@ -195,6 +195,12 @@ const Versions: CollectionConfig = {
               type: "text",
             },
             {
+              name: "method",
+              label: "HTTP Method",
+              type: "select",
+              options: ["GET", "POST"],
+            },
+            {
               name: "url",
               label: "Url",
               type: "text",
