@@ -1,0 +1,48 @@
+image:
+  repository: ghcr.io/bcgov/csbc-service-catalogue-cms
+  tag: "latest"
+  pullPolicy: Always
+
+migrate:
+  image:
+    repository: ghcr.io/bcgov/csbc-service-catalogue-cms-migrate
+    tag: "latest"
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+replicas: 1
+
+auth:
+  existingSecret: csbc-service-catalogue-cms-credentials
+  secretKeys:
+    databaseUri: database-uri
+    payloadSecret: payload-secret
+    oidcClientId: oidc-client-id
+    oidcClientSecret: oidc-client-secret
+
+oidc:
+  issuer: ""
+
+publicUrl: ""
+consentApiUrl: ""
+
+service:
+  port: 3000
+
+route:
+  enabled: true
+  host: ""
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
