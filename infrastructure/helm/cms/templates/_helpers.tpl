@@ -53,7 +53,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 - name: OIDC_ISSUER
   value: {{ .Values.oidc.issuer | quote }}
 - name: NEXT_PUBLIC_URL
-  value: {{ .Values.publicUrl | quote }}
+  value: {{ .Values.publicUrl | default (printf "https://%s" .Values.route.host) | quote }}
 - name: NEXT_PUBLIC_CONSENT_API_URL
   value: {{ .Values.consentApiUrl | quote }}
 {{- end }}

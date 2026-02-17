@@ -38,7 +38,7 @@ service:
 route:
   enabled: true
   name: csbc-service-catalogue-dev
-  host: ""
+  host: csbc-service-catalogue-dev.apps.gold.devops.gov.bc.ca
 
 resources:
   requests:
