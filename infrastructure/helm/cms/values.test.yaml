@@ -37,6 +37,7 @@ service:
 
 route:
   enabled: true
+  name: csbc-service-catalogue-test
   host: ""
 
 resources:

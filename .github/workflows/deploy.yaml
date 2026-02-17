@@ -106,4 +106,5 @@ jobs:
             -f infrastructure/helm/cms/values.${{ needs.resolve.outputs.environment }}.yaml \
             --set image.tag=${{ needs.resolve.outputs.image_tag }} \
             --set migrate.image.tag=${{ needs.resolve.outputs.image_tag }} \
+            --set oidc.issuer=${{ vars.OIDC_ISSUER }} \
             -n ${{ vars.OC_NAMESPACE }}
