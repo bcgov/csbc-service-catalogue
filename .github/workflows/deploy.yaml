@@ -107,4 +107,5 @@ jobs:
             --set image.tag=${{ needs.resolve.outputs.image_tag }} \
             --set migrate.image.tag=${{ needs.resolve.outputs.image_tag }} \
             --set oidc.issuer=${{ vars.OIDC_ISSUER }} \
+            --labels app.kubernetes.io/part-of=csbc-service-catalogue \
             -n ${{ vars.OC_NAMESPACE }}

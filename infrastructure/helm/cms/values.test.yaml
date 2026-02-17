@@ -1,3 +1,5 @@
+nameOverride: csbc-service-catalogue-cms
+
 image:
   repository: ghcr.io/bcgov/csbc-service-catalogue-cms
   tag: "latest"
