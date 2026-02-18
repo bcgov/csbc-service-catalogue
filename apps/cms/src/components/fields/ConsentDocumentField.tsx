@@ -9,8 +9,6 @@ interface ConsentDocument {
   version: number;
 }
 
-const CONSENT_API_URL = process.env.NEXT_PUBLIC_CONSENT_API_URL;
-
 export const ConsentDocumentField: React.FC<TextFieldClientProps> = ({
   field,
   path,
@@ -36,7 +34,7 @@ export const ConsentDocumentField: React.FC<TextFieldClientProps> = ({
     debounceRef.current = setTimeout(() => {
       setLoading(true);
       fetch(
-        `${CONSENT_API_URL}/api/v1/consent-documents/${encodeURIComponent(value)}`,
+        `/api/v1/consent-documents/${encodeURIComponent(value)}`,
       )
         .then((res) => {
           if (!res.ok) throw new Error(`HTTP ${res.status}`);

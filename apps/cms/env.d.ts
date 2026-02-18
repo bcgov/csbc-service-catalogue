@@ -8,6 +8,6 @@ declare namespace NodeJS {
     OIDC_CLIENT_ID: string;
     OIDC_CLIENT_SECRET: string;
     PAYLOAD_SECRET: string;
-    NEXT_PUBLIC_CONSENT_API_URL: string;
+    CONSENT_API_URL: string;
   }
 }

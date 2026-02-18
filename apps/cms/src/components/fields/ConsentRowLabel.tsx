@@ -8,8 +8,6 @@ interface ConsentDocument {
   version: number;
 }
 
-const CONSENT_API_URL = process.env.NEXT_PUBLIC_CONSENT_API_URL;
-
 export const ConsentRowLabel = () => {
   const { data, rowNumber } = useRowLabel<{ documentId?: string }>();
   const [doc, setDoc] = useState<ConsentDocument | null>(null);
@@ -30,7 +28,7 @@ export const ConsentRowLabel = () => {
 
     debounceRef.current = setTimeout(() => {
       fetch(
-        `${CONSENT_API_URL}/api/v1/consent-documents/${encodeURIComponent(documentId)}`,
+        `/api/v1/consent-documents/${encodeURIComponent(documentId)}`,
       )
         .then((res) => {
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
