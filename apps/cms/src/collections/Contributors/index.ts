@@ -1,5 +1,5 @@
 import { CollectionConfig } from "payload";
-import { generateId } from "../hooks/generateId.hook";
+
 
 const Contributors: CollectionConfig = {
   slug: "contributors",
@@ -8,15 +8,7 @@ const Contributors: CollectionConfig = {
     hidden: true,
   },
   fields: [
-    {
-      name: "id",
-      type: "text",
-      admin: { hidden: true },
-      hooks: {
-        beforeValidate: [generateId],
-      },
-    },
-    {
+{
       name: "service",
       label: "Service",
       type: "relationship",

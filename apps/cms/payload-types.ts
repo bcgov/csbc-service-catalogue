@@ -93,7 +93,7 @@ export interface Config {
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: number;
+    defaultIDType: string;
   };
   fallbackLocale: null;
   globals: {};
@@ -351,7 +351,7 @@ export interface User {
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
-  id: number;
+  id: string;
   key: string;
   data:
     | {
@@ -368,7 +368,7 @@ export interface PayloadKv {
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: number;
+  id: string;
   document?:
     | ({
         relationTo: 'services';
@@ -399,7 +399,7 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: number;
+  id: string;
   user: {
     relationTo: 'users';
     value: string | User;
@@ -422,7 +422,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number;
+  id: string;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -433,7 +433,6 @@ export interface PayloadMigration {
  * via the `definition` "services_select".
  */
 export interface ServicesSelect<T extends boolean = true> {
-  id?: T;
   organizationId?: T;
   name?: T;
   slug?: T;
@@ -464,7 +463,6 @@ export interface ServicesSelect<T extends boolean = true> {
  * via the `definition` "versions_select".
  */
 export interface VersionsSelect<T extends boolean = true> {
-  id?: T;
   service?: T;
   status?: T;
   version?: T;
@@ -582,7 +580,6 @@ export interface VersionsSelect<T extends boolean = true> {
  * via the `definition` "contributors_select".
  */
 export interface ContributorsSelect<T extends boolean = true> {
-  id?: T;
   service?: T;
   user?: T;
   role?: T;

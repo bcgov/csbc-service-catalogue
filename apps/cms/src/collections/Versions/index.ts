@@ -1,5 +1,5 @@
 import { CollectionConfig } from "payload";
-import { generateId } from "../hooks/generateId.hook";
+
 import { validateE164 } from "../hooks/validateE164.hook";
 import { validateUrl } from "../hooks/validateUrl.hook";
 import { assignVersionNumber, deriveStatus } from "./hooks/beforeChange.hooks";
@@ -37,15 +37,7 @@ const Versions: CollectionConfig = {
     beforeChange: [assignVersionNumber, deriveStatus],
   },
   fields: [
-    {
-      name: "id",
-      type: "text",
-      admin: { hidden: true },
-      hooks: {
-        beforeValidate: [generateId],
-      },
-    },
-    {
+{
       name: "formLock",
       type: "ui",
       admin: {

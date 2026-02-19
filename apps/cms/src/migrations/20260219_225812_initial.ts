@@ -9,18 +9,18 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_users_role" AS ENUM('admin', 'user');
   CREATE TABLE "services_settings_consent" (
   	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
+  	"_parent_id" uuid NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"document_id" varchar NOT NULL
   );
   
   CREATE TABLE "services" (
-  	"id" varchar PRIMARY KEY NOT NULL,
+  	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
   	"organization_id" varchar,
   	"name" varchar NOT NULL,
   	"slug" varchar,
   	"description" varchar,
-  	"published_version_id" varchar,
+  	"published_version_id" uuid,
   	"settings_delegate_access" boolean DEFAULT true,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
@@ -28,14 +28,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "versions_categories" (
   	"order" integer NOT NULL,
-  	"parent_id" varchar NOT NULL,
+  	"parent_id" uuid NOT NULL,
   	"value" "enum_versions_categories",
-  	"id" serial PRIMARY KEY NOT NULL
+  	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL
   );
   
   CREATE TABLE "versions_blocks_form" (
   	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
+  	"_parent_id" uuid NOT NULL,
   	"_path" text NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"label" varchar,
@@ -48,7 +48,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "versions_blocks_link" (
   	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
+  	"_parent_id" uuid NOT NULL,
   	"_path" text NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"label" varchar,
@@ -59,7 +59,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "versions_blocks_workflow" (
   	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
+  	"_parent_id" uuid NOT NULL,
   	"_path" text NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"label" varchar,
@@ -71,7 +71,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "versions_contact_methods_address" (
   	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
+  	"_parent_id" uuid NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"label" varchar NOT NULL,
   	"description" varchar,
@@ -84,7 +84,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "versions_contact_methods_email" (
   	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
+  	"_parent_id" uuid NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"label" varchar NOT NULL,
   	"description" varchar,
@@ -93,7 +93,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "versions_contact_methods_fax" (
   	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
+  	"_parent_id" uuid NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"label" varchar NOT NULL,
   	"description" varchar,
@@ -102,7 +102,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "versions_contact_methods_phone" (
   	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
+  	"_parent_id" uuid NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"label" varchar NOT NULL,
   	"description" varchar,
@@ -111,7 +111,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "versions_contact_methods_web" (
   	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
+  	"_parent_id" uuid NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"label" varchar NOT NULL,
   	"description" varchar,
@@ -120,7 +120,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "versions_faq" (
   	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
+  	"_parent_id" uuid NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"question" varchar,
   	"answer" varchar
@@ -128,15 +128,15 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "versions_resources" (
   	"_order" integer NOT NULL,
-  	"_parent_id" varchar NOT NULL,
+  	"_parent_id" uuid NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"label" varchar,
   	"url" varchar
   );
   
   CREATE TABLE "versions" (
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"service_id" varchar NOT NULL,
+  	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+  	"service_id" uuid NOT NULL,
   	"status" "enum_versions_status" DEFAULT 'draft',
   	"version" numeric,
   	"description_short" varchar,
@@ -149,8 +149,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   );
   
   CREATE TABLE "contributors" (
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"service_id" varchar NOT NULL,
+  	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+  	"service_id" uuid NOT NULL,
   	"user_id" varchar NOT NULL,
   	"role" "enum_contributors_role" DEFAULT 'viewer' NOT NULL,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
@@ -168,13 +168,13 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   );
   
   CREATE TABLE "payload_kv" (
-  	"id" serial PRIMARY KEY NOT NULL,
+  	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
   	"key" varchar NOT NULL,
   	"data" jsonb NOT NULL
   );
   
   CREATE TABLE "payload_locked_documents" (
-  	"id" serial PRIMARY KEY NOT NULL,
+  	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
   	"global_slug" varchar,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
@@ -183,16 +183,16 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE "payload_locked_documents_rels" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"order" integer,
-  	"parent_id" integer NOT NULL,
+  	"parent_id" uuid NOT NULL,
   	"path" varchar NOT NULL,
-  	"services_id" varchar,
-  	"versions_id" varchar,
-  	"contributors_id" varchar,
+  	"services_id" uuid,
+  	"versions_id" uuid,
+  	"contributors_id" uuid,
   	"users_id" varchar
   );
   
   CREATE TABLE "payload_preferences" (
-  	"id" serial PRIMARY KEY NOT NULL,
+  	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
   	"key" varchar,
   	"value" jsonb,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
@@ -202,13 +202,13 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE "payload_preferences_rels" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"order" integer,
-  	"parent_id" integer NOT NULL,
+  	"parent_id" uuid NOT NULL,
   	"path" varchar NOT NULL,
   	"users_id" varchar
   );
   
   CREATE TABLE "payload_migrations" (
-  	"id" serial PRIMARY KEY NOT NULL,
+  	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
   	"name" varchar,
   	"batch" numeric,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,

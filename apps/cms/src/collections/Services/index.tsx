@@ -1,5 +1,5 @@
 import { CollectionConfig } from "payload";
-import { generateId } from "../hooks/generateId.hook";
+
 import { createInitialVersionAndOwner } from "./hooks/afterChange.hook";
 import { generateSlug } from "./hooks/beforeChange.hook";
 import { deleteRelatedDocs } from "./hooks/beforeDelete.hook";
@@ -16,15 +16,7 @@ const Services: CollectionConfig = {
     beforeDelete: [deleteRelatedDocs],
   },
   fields: [
-    {
-      name: "id",
-      type: "text",
-      admin: { hidden: true },
-      hooks: {
-        beforeValidate: [generateId],
-      },
-    },
-    {
+{
       name: "organizationId",
       label: "Organization",
       type: "text",

@@ -28,6 +28,7 @@ export default buildConfig({
   },
   collections: [Users, Services, Versions, Contributors],
   db: postgresAdapter({
+    idType: "uuid",
     pool: {
       connectionString: process.env.DATABASE_URI || "",
     },
