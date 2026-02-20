@@ -33,6 +33,7 @@ const Services: CollectionConfig = {
       label: "Name",
       type: "text",
       required: true,
+      localized: true,
     },
     {
       name: "slug",
