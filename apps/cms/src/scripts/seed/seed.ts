@@ -28,6 +28,7 @@ const configPromise = buildConfig({
   },
   collections: [Users, SeedServices, SeedVersions, Contributors],
   db: postgresAdapter({
+    allowIDOnCreate: true,
     idType: "uuid",
     pool: {
       connectionString: process.env.DATABASE_URI || "",
@@ -47,6 +48,7 @@ const configPromise = buildConfig({
 
 interface SeedData {
   services: Array<{
+    id: string;
     organizationId: string;
     name: { en: string; fr: string };
     description: string | null;
@@ -55,6 +57,7 @@ interface SeedData {
       delegate: { access: boolean };
     };
     versions: Array<{
+      id: string;
       en: Record<string, unknown>;
       fr: Record<string, unknown>;
     }>;
@@ -67,56 +70,6 @@ const seedData = JSON.parse(
     "utf-8",
   ),
 ) as SeedData;
-
-/**
- * Recursively injects auto-generated `id` fields from a created document
- * into the corresponding positions of a locale update payload.
- * This ensures Payload updates existing array/block items in-place
- * rather than replacing the entire array (which would wipe other locales).
- */
-function mergeIds(
-  created: Record<string, unknown>,
-  update: Record<string, unknown>,
-): Record<string, unknown> {
-  const result = { ...update };
-  for (const [key, value] of Object.entries(result)) {
-    const createdValue = created[key];
-    if (Array.isArray(value) && Array.isArray(createdValue)) {
-      result[key] = value.map((item, i) => {
-        if (
-          item &&
-          typeof item === "object" &&
-          !Array.isArray(item) &&
-          createdValue[i] &&
-          typeof createdValue[i] === "object" &&
-          (createdValue[i] as Record<string, unknown>).id
-        ) {
-          return {
-            ...mergeIds(
-              createdValue[i] as Record<string, unknown>,
-              item as Record<string, unknown>,
-            ),
-            id: (createdValue[i] as Record<string, unknown>).id,
-          };
-        }
-        return item;
-      });
-    } else if (
-      value &&
-      typeof value === "object" &&
-      !Array.isArray(value) &&
-      createdValue &&
-      typeof createdValue === "object" &&
-      !Array.isArray(createdValue)
-    ) {
-      result[key] = mergeIds(
-        createdValue as Record<string, unknown>,
-        value as Record<string, unknown>,
-      );
-    }
-  }
-  return result;
-}
 
 async function seed() {
   const payload = await getPayload({ config: configPromise });
@@ -145,6 +98,7 @@ async function seed() {
       const created = await payload.create({
         collection: "services",
         data: {
+          id: svc.id,
           organizationId: svc.organizationId,
           name: svc.name.en,
           slug,
@@ -171,23 +125,17 @@ async function seed() {
         const newVersion = await payload.create({
           collection: "versions",
           data: {
+            id: versionData.id,
             service: created.id,
             ...versionData.en,
           },
           locale: "en",
         });
 
-        // Merge auto-generated IDs from the created version into the French data
-        // so Payload updates existing array/block items instead of replacing them
-        const frData = mergeIds(
-          newVersion as unknown as Record<string, unknown>,
-          versionData.fr as Record<string, unknown>,
-        );
-
         await payload.update({
           collection: "versions",
           id: newVersion.id,
-          data: frData,
+          data: versionData.fr,
           locale: "fr",
         });
 

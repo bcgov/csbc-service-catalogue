@@ -1,22 +1,24 @@
 {
   "services": [
     {
+      "id": "ff615358-eb69-4c82-870c-c950d95d6dee",
       "organizationId": "69e7c7f4-ec8c-4523-991e-5471dd0e56ab",
       "name": { "en": "Service One", "fr": "Service un" },
       "description": null,
       "settings": {
         "consent": [
-          { "documentId": "f19cbfb2-0c25-4c05-8ed8-f0c01862a56a" },
-          { "documentId": "1c8dc4be-05f4-498b-a72a-975489b92013" },
-          { "documentId": "aea5e553-cc10-4d7f-8a22-d04a3df4bf35" },
-          { "documentId": "cd8e067d-c4c1-413f-845f-9c8f5228525e" },
-          { "documentId": "6dd0a132-5770-4701-9095-828fc1b5d18c" },
-          { "documentId": "9ffa9351-4a96-4b93-a245-3ec34d48d6af" }
+          { "id": "6607ce1e-26fc-4190-90b8-c389a3a36e7d", "documentId": "8a3d30ad-37c0-439c-8690-87bcb38e77aa" },
+          { "id": "5aa86fc5-5c8a-4671-bf9c-5b1b4125d023", "documentId": "7aaef63c-7712-4033-b8a3-73370ed43587" },
+          { "id": "456b6131-58af-47fd-8100-dfb677667fc1", "documentId": "2a686e18-fabd-41d3-9634-ea51d104242e" },
+          { "id": "5772428a-25f3-45af-a95c-d22b8ac1a114", "documentId": "ad727499-6b04-4598-9ab2-715139ba76f0" },
+          { "id": "d944da13-5eea-4b50-bc9d-c3b1d8bb761e", "documentId": "d53f8b61-104a-4bac-9e68-7645695fa5f1" },
+          { "id": "1b6ac98c-f713-478f-9c24-3f1c7b77ff80", "documentId": "d5cdf02e-9b6c-4c5c-bfe4-8337bda7bec7" }
         ],
         "delegate": { "access": true }
       },
       "versions": [
         {
+          "id": "741ec85b-8f57-49a9-a4e4-667ad226c6d7",
           "en": {
             "version": 1,
             "status": "published",
@@ -27,6 +29,7 @@
             },
             "applications": [
               {
+                "id": "5b767746-fd24-4668-97fe-fca7669b9ed2",
                 "blockType": "form",
                 "label": "Service One Application",
                 "description": null,
@@ -38,6 +41,7 @@
             "contactMethods": {
               "address": [
                 {
+                  "id": "3b954add-f465-451d-8c9b-ae2daeaca348",
                   "label": "Visit us in person",
                   "description": null,
                   "addressOne": "501 Belleville St",
@@ -49,6 +53,7 @@
               ],
               "email": [
                 {
+                  "id": "a65083e6-5112-4f61-b959-d31fb24beb22",
                   "label": "Report fraud",
                   "description": null,
                   "value": "fraud@local.host"
@@ -57,6 +62,7 @@
               "fax": [],
               "phone": [
                 {
+                  "id": "eded299d-bc89-4608-9834-bdca8c38f069",
                   "label": "Call us",
                   "description": null,
                   "value": "+15551234567"
@@ -64,6 +70,7 @@
               ],
               "web": [
                 {
+                  "id": "47b0ecc5-f889-4a91-a89a-491dd57bf4f3",
                   "label": "Help centre",
                   "description": "Help and support resources",
                   "value": "https://gov.bc.ca"
@@ -282,39 +289,46 @@
             },
             "faq": [
               {
+                "id": "baf24246-a087-444c-b5a2-67004d267349",
                 "question": "What can I do with MyBC right now?",
                 "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi est, bibendum at elit sit amet, pharetra volutpat justo. Sed at varius ex. Sed scelerisque, velit consequat vulputate blandit, odio justo placerat erat, eu rhoncus urna nunc non dolor. Phasellus mollis, turpis tempus aliquam suscipit, ipsum diam faucibus velit, ac finibus nulla magna fringilla ligula. Morbi mi ex, interdum vehicula quam at, consequat lobortis eros. Sed nec euismod nunc."
               },
               {
+                "id": "4bf97006-a395-4ba0-85c3-684c6512c67c",
                 "question": "Which services and applications are connected to my account?",
                 "answer": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla sit amet suscipit metus. Proin pellentesque dignissim consectetur."
               },
               {
+                "id": "ff396028-b877-468b-a501-59988678cd08",
                 "question": "How is my information used and shared across services?",
                 "answer": "Donec nisl arcu, hendrerit vitae mollis non, convallis ut magna. Aliquam ultricies magna quis ipsum dignissim volutpat. Integer nec ex magna."
               },
               {
+                "id": "36276f2a-fcf1-4c15-b98e-94bd6b971b43",
                 "question": "Can someone else access my MyBC account?",
                 "answer": "Sed at tempor arcu. Proin sodales, nisi non luctus sodales, leo lectus dignissim sapien, a vehicula nisl nulla at augue. Aliquam tempus metus in sapien vulputate ultrices. Pellentesque vehicula malesuada urna non sollicitudin. Phasellus sagittis semper lectus eu rhoncus. Cras lorem mi, fermentum non varius a, euismod at neque. Mauris eget interdum massa, nec auctor diam. Maecenas ultricies venenatis nunc. In porta lorem ac eleifend aliquet."
               },
               {
+                "id": "4cf6d3d6-8c81-4807-a89f-431cc03c37e9",
                 "question": "How do I track the status of my applications and activity?",
                 "answer": "Pellentesque accumsan feugiat tellus, eget condimentum dui commodo laoreet. Morbi maximus dui sit amet ipsum commodo tincidunt. Sed feugiat nulla sed mi sagittis porttitor. Nullam sagittis, quam vitae scelerisque egestas, mi tellus pellentesque nulla, id luctus libero purus sit amet purus. Nulla ipsum urna, facilisis eget elit ut, congue vehicula ipsum. Nulla quis elit nisl. Phasellus ac lacinia odio, vitae rutrum dolor. Etiam varius elit arcu, efficitur fringilla lacus hendrerit iaculis."
               },
               {
+                "id": "ddb6f0d4-1e8e-40c4-88e7-25d8ffde0bfa",
                 "question": "What should I do if something doesn't look right or feels wrong?",
                 "answer": "Phasellus et urna ac nunc tincidunt cursus. Aliquam tempus varius volutpat. Ut eros enim, euismod vel magna eu, egestas dictum dolor. Aenean elit augue, lobortis laoreet gravida at, efficitur nec velit."
               },
               {
+                "id": "5456db97-fa89-498d-8f3b-71fb37aef626",
                 "question": "How can I update my information on the profile page?",
                 "answer": "Quisque tincidunt nisi in tellus tincidunt dapibus. Proin laoreet nibh ultrices leo porttitor, non cursus neque fermentum. Donec facilisis, tortor facilisis euismod mollis, tellus diam eleifend odio, quis eleifend risus dolor et quam. In blandit lectus vel eros sagittis egestas. Phasellus scelerisque scelerisque velit vel ultrices. Aenean tempus condimentum magna vitae elementum. Vivamus ornare auctor pretium. Proin tristique nisi at mauris vulputate, non iaculis purus consequat."
               }
             ],
             "resources": [
-              { "label": "Apply for assistance", "url": "https://gov.bc.ca" },
-              { "label": "On assistance", "url": "https://gov.bc.ca" },
-              { "label": "Payment dates", "url": "https://gov.bc.ca" },
-              { "label": "Access services", "url": "https://gov.bc.ca" }
+              { "id": "c38feda3-f1bf-4e91-bfd1-b24eb11a7ac4", "label": "Apply for assistance", "url": "https://gov.bc.ca" },
+              { "id": "244cd77a-d808-4344-b818-8a14a9a7d4a2", "label": "On assistance", "url": "https://gov.bc.ca" },
+              { "id": "db678c15-fa26-4220-aaba-3c89ee25c77e", "label": "Payment dates", "url": "https://gov.bc.ca" },
+              { "id": "c9d97e57-b36e-4eb9-844c-177eaf681e50", "label": "Access services", "url": "https://gov.bc.ca" }
             ],
             "publishedAt": "2026-02-23T23:40:59.658Z",
             "archivedAt": null
@@ -326,6 +340,7 @@
             },
             "applications": [
               {
+                "id": "5b767746-fd24-4668-97fe-fca7669b9ed2",
                 "blockType": "form",
                 "label": "Demande de Service Un",
                 "description": null,
@@ -337,6 +352,7 @@
             "contactMethods": {
               "address": [
                 {
+                  "id": "3b954add-f465-451d-8c9b-ae2daeaca348",
                   "label": "Rendez-nous visite en personne",
                   "description": null,
                   "addressOne": "501 Belleville St",
@@ -348,6 +364,7 @@
               ],
               "email": [
                 {
+                  "id": "a65083e6-5112-4f61-b959-d31fb24beb22",
                   "label": "Signaler une fraude",
                   "description": null,
                   "value": "fraud@local.host"
@@ -356,6 +373,7 @@
               "fax": [],
               "phone": [
                 {
+                  "id": "eded299d-bc89-4608-9834-bdca8c38f069",
                   "label": "Appelez-nous",
                   "description": null,
                   "value": "+15551234567"
@@ -363,6 +381,7 @@
               ],
               "web": [
                 {
+                  "id": "47b0ecc5-f889-4a91-a89a-491dd57bf4f3",
                   "label": "Centre d'aide",
                   "description": "Ressources d'aide et de soutien",
                   "value": "https://gov.bc.ca"
@@ -551,42 +570,46 @@
             },
             "faq": [
               {
+                "id": "baf24246-a087-444c-b5a2-67004d267349",
                 "question": "Que puis-je faire avec MyBC en ce moment?",
                 "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi est, bibendum at elit sit amet, pharetra volutpat justo. Sed at varius ex. Sed scelerisque, velit consequat vulputate blandit, odio justo placerat erat, eu rhoncus urna nunc non dolor. Phasellus mollis, turpis tempus aliquam suscipit, ipsum diam faucibus velit, ac finibus nulla magna fringilla ligula. Morbi mi ex, interdum vehicula quam at, consequat lobortis eros. Sed nec euismod nunc."
               },
               {
+                "id": "4bf97006-a395-4ba0-85c3-684c6512c67c",
                 "question": "Quels services et quelles demandes sont liés à mon compte?",
                 "answer": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla sit amet suscipit metus. Proin pellentesque dignissim consectetur."
               },
               {
+                "id": "ff396028-b877-468b-a501-59988678cd08",
                 "question": "Comment mes renseignements sont-ils utilisés et partagés entre les services?",
                 "answer": "Donec nisl arcu, hendrerit vitae mollis non, convallis ut magna. Aliquam ultricies magna quis ipsum dignissim volutpat. Integer nec ex magna."
               },
               {
+                "id": "36276f2a-fcf1-4c15-b98e-94bd6b971b43",
                 "question": "Quelqu'un d'autre peut-il accéder à mon compte MyBC?",
                 "answer": "Sed at tempor arcu. Proin sodales, nisi non luctus sodales, leo lectus dignissim sapien, a vehicula nisl nulla at augue. Aliquam tempus metus in sapien vulputate ultrices. Pellentesque vehicula malesuada urna non sollicitudin. Phasellus sagittis semper lectus eu rhoncus. Cras lorem mi, fermentum non varius a, euismod at neque. Mauris eget interdum massa, nec auctor diam. Maecenas ultricies venenatis nunc. In porta lorem ac eleifend aliquet."
               },
               {
+                "id": "4cf6d3d6-8c81-4807-a89f-431cc03c37e9",
                 "question": "Comment puis-je suivre l'état de mes demandes et de mon activité?",
                 "answer": "Pellentesque accumsan feugiat tellus, eget condimentum dui commodo laoreet. Morbi maximus dui sit amet ipsum commodo tincidunt. Sed feugiat nulla sed mi sagittis porttitor. Nullam sagittis, quam vitae scelerisque egestas, mi tellus pellentesque nulla, id luctus libero purus sit amet purus. Nulla ipsum urna, facilisis eget elit ut, congue vehicula ipsum. Nulla quis elit nisl. Phasellus ac lacinia odio, vitae rutrum dolor. Etiam varius elit arcu, efficitur fringilla lacus hendrerit iaculis."
               },
               {
+                "id": "ddb6f0d4-1e8e-40c4-88e7-25d8ffde0bfa",
                 "question": "Que dois-je faire si quelque chose ne semble pas correct ou me paraît anormal?",
                 "answer": "Phasellus et urna ac nunc tincidunt cursus. Aliquam tempus varius volutpat. Ut eros enim, euismod vel magna eu, egestas dictum dolor. Aenean elit augue, lobortis laoreet gravida at, efficitur nec velit."
               },
               {
+                "id": "5456db97-fa89-498d-8f3b-71fb37aef626",
                 "question": "Comment puis-je mettre à jour mes renseignements sur la page de profil?",
                 "answer": "Quisque tincidunt nisi in tellus tincidunt dapibus. Proin laoreet nibh ultrices leo porttitor, non cursus neque fermentum. Donec facilisis, tortor facilisis euismod mollis, tellus diam eleifend odio, quis eleifend risus dolor et quam. In blandit lectus vel eros sagittis egestas. Phasellus scelerisque scelerisque velit vel ultrices. Aenean tempus condimentum magna vitae elementum. Vivamus ornare auctor pretium. Proin tristique nisi at mauris vulputate, non iaculis purus consequat."
               }
             ],
             "resources": [
-              {
-                "label": "Faire une demande d'aide",
-                "url": "https://gov.bc.ca"
-              },
-              { "label": "En cours d'aide", "url": "https://gov.bc.ca" },
-              { "label": "Dates de paiement", "url": "https://gov.bc.ca" },
-              { "label": "Accéder aux services", "url": "https://gov.bc.ca" }
+              { "id": "c38feda3-f1bf-4e91-bfd1-b24eb11a7ac4", "label": "Faire une demande d'aide", "url": "https://gov.bc.ca" },
+              { "id": "244cd77a-d808-4344-b818-8a14a9a7d4a2", "label": "En cours d'aide", "url": "https://gov.bc.ca" },
+              { "id": "db678c15-fa26-4220-aaba-3c89ee25c77e", "label": "Dates de paiement", "url": "https://gov.bc.ca" },
+              { "id": "c9d97e57-b36e-4eb9-844c-177eaf681e50", "label": "Accéder aux services", "url": "https://gov.bc.ca" }
             ]
           }
         }
