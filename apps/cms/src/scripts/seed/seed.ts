@@ -135,11 +135,19 @@ async function seed() {
     );
   } else {
     for (const svc of seedData.services) {
+      const slug = svc.name.en
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/[\s_]+/g, "-")
+        .replace(/-+/g, "-");
+
       const created = await payload.create({
         collection: "services",
         data: {
           organizationId: svc.organizationId,
           name: svc.name.en,
+          slug,
           description: svc.description,
           settings: svc.settings,
         },
