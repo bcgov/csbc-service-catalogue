@@ -1,0 +1,596 @@
+{
+  "services": [
+    {
+      "organizationId": "69e7c7f4-ec8c-4523-991e-5471dd0e56ab",
+      "name": { "en": "Service One", "fr": "Service un" },
+      "description": null,
+      "settings": {
+        "consent": [
+          { "documentId": "f19cbfb2-0c25-4c05-8ed8-f0c01862a56a" },
+          { "documentId": "1c8dc4be-05f4-498b-a72a-975489b92013" },
+          { "documentId": "aea5e553-cc10-4d7f-8a22-d04a3df4bf35" },
+          { "documentId": "cd8e067d-c4c1-413f-845f-9c8f5228525e" },
+          { "documentId": "6dd0a132-5770-4701-9095-828fc1b5d18c" },
+          { "documentId": "9ffa9351-4a96-4b93-a245-3ec34d48d6af" }
+        ],
+        "delegate": { "access": true }
+      },
+      "versions": [
+        {
+          "en": {
+            "version": 1,
+            "status": "published",
+            "categories": [],
+            "description": {
+              "short": "Financial assistance to support your transition to employment.",
+              "long": "Service One provides temporary financial support to help you meet basic needs while you work toward employment or other sources of income."
+            },
+            "applications": [
+              {
+                "blockType": "form",
+                "label": "Service One Application",
+                "description": null,
+                "apiKey": "83688c02-59d7-49fc-a25a-462895e37a13",
+                "formId": "bcc7a548-1100-432d-82a3-5c0901574a0b",
+                "url": "https://chefs-dev.apps.silver.devops.gov.bc.ca/app"
+              }
+            ],
+            "contactMethods": {
+              "address": [
+                {
+                  "label": "Visit us in person",
+                  "description": null,
+                  "addressOne": "501 Belleville St",
+                  "addressTwo": null,
+                  "city": "Victoria",
+                  "province": "British Columbia",
+                  "country": "Canada"
+                }
+              ],
+              "email": [
+                {
+                  "label": "Report fraud",
+                  "description": null,
+                  "value": "fraud@local.host"
+                }
+              ],
+              "fax": [],
+              "phone": [
+                {
+                  "label": "Call us",
+                  "description": null,
+                  "value": "+15551234567"
+                }
+              ],
+              "web": [
+                {
+                  "label": "Help centre",
+                  "description": "Help and support resources",
+                  "value": "https://gov.bc.ca"
+                }
+              ]
+            },
+            "content": {
+              "root": {
+                "type": "root",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "Who is it for",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 1,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 1
+                  },
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "Service one provides temporary financial support to help you meet basic needs while you work toward employment or other sources of income.",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  },
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "What you'll get",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 1,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 1
+                  },
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "Service One assistance can include:",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  },
+                  {
+                    "tag": "ul",
+                    "type": "list",
+                    "start": 1,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "type": "listitem",
+                        "value": 1,
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "Monthly financial support",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 1,
+                            "version": 1
+                          },
+                          {
+                            "mode": "normal",
+                            "text": " to help cover basic needs like food, clothing, and shelter",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": null,
+                        "textFormat": 1
+                      },
+                      {
+                        "type": "listitem",
+                        "value": 2,
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "Health-related supports",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 1,
+                            "version": 1
+                          },
+                          {
+                            "mode": "normal",
+                            "text": ", such as basic medical coverage and eligible supplements",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": null,
+                        "textFormat": 1
+                      },
+                      {
+                        "type": "listitem",
+                        "value": 3,
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "Employment-related supports",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 1,
+                            "version": 1
+                          },
+                          {
+                            "mode": "normal",
+                            "text": " to help you prepare for, look for, or return to work",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": null,
+                        "textFormat": 1
+                      }
+                    ],
+                    "listType": "bullet",
+                    "direction": null
+                  },
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "The type and amount of support depend on your situation.",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  }
+                ],
+                "direction": null
+              }
+            },
+            "faq": [
+              {
+                "question": "What can I do with MyBC right now?",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi est, bibendum at elit sit amet, pharetra volutpat justo. Sed at varius ex. Sed scelerisque, velit consequat vulputate blandit, odio justo placerat erat, eu rhoncus urna nunc non dolor. Phasellus mollis, turpis tempus aliquam suscipit, ipsum diam faucibus velit, ac finibus nulla magna fringilla ligula. Morbi mi ex, interdum vehicula quam at, consequat lobortis eros. Sed nec euismod nunc."
+              },
+              {
+                "question": "Which services and applications are connected to my account?",
+                "answer": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla sit amet suscipit metus. Proin pellentesque dignissim consectetur."
+              },
+              {
+                "question": "How is my information used and shared across services?",
+                "answer": "Donec nisl arcu, hendrerit vitae mollis non, convallis ut magna. Aliquam ultricies magna quis ipsum dignissim volutpat. Integer nec ex magna."
+              },
+              {
+                "question": "Can someone else access my MyBC account?",
+                "answer": "Sed at tempor arcu. Proin sodales, nisi non luctus sodales, leo lectus dignissim sapien, a vehicula nisl nulla at augue. Aliquam tempus metus in sapien vulputate ultrices. Pellentesque vehicula malesuada urna non sollicitudin. Phasellus sagittis semper lectus eu rhoncus. Cras lorem mi, fermentum non varius a, euismod at neque. Mauris eget interdum massa, nec auctor diam. Maecenas ultricies venenatis nunc. In porta lorem ac eleifend aliquet."
+              },
+              {
+                "question": "How do I track the status of my applications and activity?",
+                "answer": "Pellentesque accumsan feugiat tellus, eget condimentum dui commodo laoreet. Morbi maximus dui sit amet ipsum commodo tincidunt. Sed feugiat nulla sed mi sagittis porttitor. Nullam sagittis, quam vitae scelerisque egestas, mi tellus pellentesque nulla, id luctus libero purus sit amet purus. Nulla ipsum urna, facilisis eget elit ut, congue vehicula ipsum. Nulla quis elit nisl. Phasellus ac lacinia odio, vitae rutrum dolor. Etiam varius elit arcu, efficitur fringilla lacus hendrerit iaculis."
+              },
+              {
+                "question": "What should I do if something doesn't look right or feels wrong?",
+                "answer": "Phasellus et urna ac nunc tincidunt cursus. Aliquam tempus varius volutpat. Ut eros enim, euismod vel magna eu, egestas dictum dolor. Aenean elit augue, lobortis laoreet gravida at, efficitur nec velit."
+              },
+              {
+                "question": "How can I update my information on the profile page?",
+                "answer": "Quisque tincidunt nisi in tellus tincidunt dapibus. Proin laoreet nibh ultrices leo porttitor, non cursus neque fermentum. Donec facilisis, tortor facilisis euismod mollis, tellus diam eleifend odio, quis eleifend risus dolor et quam. In blandit lectus vel eros sagittis egestas. Phasellus scelerisque scelerisque velit vel ultrices. Aenean tempus condimentum magna vitae elementum. Vivamus ornare auctor pretium. Proin tristique nisi at mauris vulputate, non iaculis purus consequat."
+              }
+            ],
+            "resources": [
+              { "label": "Apply for assistance", "url": "https://gov.bc.ca" },
+              { "label": "On assistance", "url": "https://gov.bc.ca" },
+              { "label": "Payment dates", "url": "https://gov.bc.ca" },
+              { "label": "Access services", "url": "https://gov.bc.ca" }
+            ],
+            "publishedAt": "2026-02-23T23:40:59.658Z",
+            "archivedAt": null
+          },
+          "fr": {
+            "description": {
+              "short": "Aide financière pour soutenir votre transition vers l'emploi.",
+              "long": "Le Service Un offre un soutien financier temporaire pour vous aider à subvenir à vos besoins essentiels pendant que vous travaillez à obtenir un emploi ou d'autres sources de revenus."
+            },
+            "applications": [
+              {
+                "blockType": "form",
+                "label": "Demande de Service Un",
+                "description": null,
+                "apiKey": "83688c02-59d7-49fc-a25a-462895e37a13",
+                "formId": "bcc7a548-1100-432d-82a3-5c0901574a0b",
+                "url": "https://chefs-dev.apps.silver.devops.gov.bc.ca/app"
+              }
+            ],
+            "contactMethods": {
+              "address": [
+                {
+                  "label": "Rendez-nous visite en personne",
+                  "description": null,
+                  "addressOne": "501 Belleville St",
+                  "addressTwo": null,
+                  "city": "Victoria",
+                  "province": "Colombie-Britannique",
+                  "country": "Canada"
+                }
+              ],
+              "email": [
+                {
+                  "label": "Signaler une fraude",
+                  "description": null,
+                  "value": "fraud@local.host"
+                }
+              ],
+              "fax": [],
+              "phone": [
+                {
+                  "label": "Appelez-nous",
+                  "description": null,
+                  "value": "+15551234567"
+                }
+              ],
+              "web": [
+                {
+                  "label": "Centre d'aide",
+                  "description": "Ressources d'aide et de soutien",
+                  "value": "https://gov.bc.ca"
+                }
+              ]
+            },
+            "content": {
+              "root": {
+                "type": "root",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "À qui s'adresse ce service",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 1,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 1
+                  },
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "Le Service Un offre un soutien financier temporaire pour vous aider à subvenir à vos besoins essentiels pendant que vous travaillez à obtenir un emploi ou d'autres sources de revenus.",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  },
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "Ce que vous recevrez",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 1,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 1
+                  },
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "L'aide peut comprendre :",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  },
+                  {
+                    "tag": "ul",
+                    "type": "list",
+                    "start": 1,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "type": "listitem",
+                        "value": 1,
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "Un soutien financier mensuel pour vous aider à couvrir vos besoins essentiels comme la nourriture, les vêtements et le logement",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": null
+                      },
+                      {
+                        "type": "listitem",
+                        "value": 2,
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "Des soutiens liés à la santé, tels qu'une couverture médicale de base et des suppléments admissibles",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": null
+                      },
+                      {
+                        "type": "listitem",
+                        "value": 3,
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "Des soutiens liés à l'emploi pour vous aider à vous préparer à travailler, à chercher un emploi ou à retourner au travail",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": null
+                      }
+                    ],
+                    "listType": "bullet",
+                    "direction": null
+                  },
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "Le type et le montant du soutien dépendent de votre situation.",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  }
+                ],
+                "direction": null
+              }
+            },
+            "faq": [
+              {
+                "question": "Que puis-je faire avec MyBC en ce moment?",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi est, bibendum at elit sit amet, pharetra volutpat justo. Sed at varius ex. Sed scelerisque, velit consequat vulputate blandit, odio justo placerat erat, eu rhoncus urna nunc non dolor. Phasellus mollis, turpis tempus aliquam suscipit, ipsum diam faucibus velit, ac finibus nulla magna fringilla ligula. Morbi mi ex, interdum vehicula quam at, consequat lobortis eros. Sed nec euismod nunc."
+              },
+              {
+                "question": "Quels services et quelles demandes sont liés à mon compte?",
+                "answer": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla sit amet suscipit metus. Proin pellentesque dignissim consectetur."
+              },
+              {
+                "question": "Comment mes renseignements sont-ils utilisés et partagés entre les services?",
+                "answer": "Donec nisl arcu, hendrerit vitae mollis non, convallis ut magna. Aliquam ultricies magna quis ipsum dignissim volutpat. Integer nec ex magna."
+              },
+              {
+                "question": "Quelqu'un d'autre peut-il accéder à mon compte MyBC?",
+                "answer": "Sed at tempor arcu. Proin sodales, nisi non luctus sodales, leo lectus dignissim sapien, a vehicula nisl nulla at augue. Aliquam tempus metus in sapien vulputate ultrices. Pellentesque vehicula malesuada urna non sollicitudin. Phasellus sagittis semper lectus eu rhoncus. Cras lorem mi, fermentum non varius a, euismod at neque. Mauris eget interdum massa, nec auctor diam. Maecenas ultricies venenatis nunc. In porta lorem ac eleifend aliquet."
+              },
+              {
+                "question": "Comment puis-je suivre l'état de mes demandes et de mon activité?",
+                "answer": "Pellentesque accumsan feugiat tellus, eget condimentum dui commodo laoreet. Morbi maximus dui sit amet ipsum commodo tincidunt. Sed feugiat nulla sed mi sagittis porttitor. Nullam sagittis, quam vitae scelerisque egestas, mi tellus pellentesque nulla, id luctus libero purus sit amet purus. Nulla ipsum urna, facilisis eget elit ut, congue vehicula ipsum. Nulla quis elit nisl. Phasellus ac lacinia odio, vitae rutrum dolor. Etiam varius elit arcu, efficitur fringilla lacus hendrerit iaculis."
+              },
+              {
+                "question": "Que dois-je faire si quelque chose ne semble pas correct ou me paraît anormal?",
+                "answer": "Phasellus et urna ac nunc tincidunt cursus. Aliquam tempus varius volutpat. Ut eros enim, euismod vel magna eu, egestas dictum dolor. Aenean elit augue, lobortis laoreet gravida at, efficitur nec velit."
+              },
+              {
+                "question": "Comment puis-je mettre à jour mes renseignements sur la page de profil?",
+                "answer": "Quisque tincidunt nisi in tellus tincidunt dapibus. Proin laoreet nibh ultrices leo porttitor, non cursus neque fermentum. Donec facilisis, tortor facilisis euismod mollis, tellus diam eleifend odio, quis eleifend risus dolor et quam. In blandit lectus vel eros sagittis egestas. Phasellus scelerisque scelerisque velit vel ultrices. Aenean tempus condimentum magna vitae elementum. Vivamus ornare auctor pretium. Proin tristique nisi at mauris vulputate, non iaculis purus consequat."
+              }
+            ],
+            "resources": [
+              {
+                "label": "Faire une demande d'aide",
+                "url": "https://gov.bc.ca"
+              },
+              { "label": "En cours d'aide", "url": "https://gov.bc.ca" },
+              { "label": "Dates de paiement", "url": "https://gov.bc.ca" },
+              { "label": "Accéder aux services", "url": "https://gov.bc.ca" }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
