@@ -42,6 +42,16 @@ route:
   name: csbc-service-catalogue-dev
   host: csbc-service-catalogue-dev.apps.gold.devops.gov.bc.ca
 
+seed:
+  enabled: true
+  resources:
+    requests:
+      cpu: 50m
+      memory: 256Mi
+    limits:
+      cpu: 250m
+      memory: 512Mi
+
 resources:
   requests:
     cpu: 50m
