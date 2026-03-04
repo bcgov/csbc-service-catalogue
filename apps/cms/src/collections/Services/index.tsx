@@ -16,134 +16,160 @@ const Services: CollectionConfig = {
     beforeDelete: [deleteRelatedDocs],
   },
   fields: [
-{
-      name: "organizationId",
-      label: "Organization",
-      type: "text",
-      admin: {
-        components: {
-          Field:
-            "./src/components/fields/OrganizationSelect.tsx#OrganizationSelect",
-          Cell: "./src/components/fields/OrganizationCell.tsx#OrganizationCell",
-        },
-      },
-    },
     {
-      name: "name",
-      label: "Name",
-      type: "text",
-      required: true,
-      localized: true,
-    },
-    {
-      name: "slug",
-      label: "Slug",
-      type: "text",
-      unique: true,
-      admin: {
-        readOnly: true,
-        condition: (data) => !!data?.id,
-      },
-      access: {
-        update: () => false,
-      },
-    },
-    {
-      name: "description",
-      label: "Internal Description",
-      type: "textarea",
-      admin: {
-        description: "This field is not visible to end users.",
-      },
-    },
-    {
-      name: "publishedVersion",
-      label: "Published Version",
-      type: "relationship",
-      relationTo: "versions",
-      admin: {
-        readOnly: true,
-        condition: (data) => !!data?.id,
-      },
-    },
-    {
-      name: "versions",
-      label: "Versions",
-      type: "join",
-      collection: "versions",
-      on: "service",
-      admin: {
-        allowCreate: true,
-        condition: (data) => !!data?.id,
-      },
-    },
-    {
-      name: "contributors",
-      label: "Contributors",
-      type: "join",
-      collection: "contributors",
-      on: "service",
-      admin: {
-        condition: (data) => !!data?.id,
-        defaultColumns: ["user", "role", "createdAt"],
-      },
-    },
-    {
-      name: "settings",
-      label: "Settings",
-      type: "group",
-      admin: {
-        description: "Additional service configuration",
-      },
-      fields: [
+      type: "tabs",
+      tabs: [
         {
-          name: "consent",
-          labels: {
-            singular: "Consent Document",
-            plural: "Consent Documents",
-          },
-          type: "array",
-          admin: {
-            description:
-              "Add Consent Documents by ID. Visit the Consent Manager to identify the Consent Document.",
-            components: {
-              RowLabel:
-                "./src/components/fields/ConsentRowLabel.tsx#ConsentRowLabel",
-            },
-          },
+          label: "General Details",
           fields: [
             {
-              name: "documentId",
-              label: "Document ID",
+              name: "name",
+              label: "Name",
               type: "text",
               required: true,
+              localized: true,
+            },
+            {
+              name: "slug",
+              label: "Slug",
+              type: "text",
+              unique: true,
+              admin: {
+                readOnly: true,
+                condition: (data) => !!data?.id,
+              },
+              access: {
+                update: () => false,
+              },
+            },
+            {
+              name: "description",
+              label: "Internal Description",
+              type: "textarea",
+              admin: {
+                description: "This field is not visible to end users.",
+              },
+            },
+            {
+              name: "organizationId",
+              label: "Primary Organization",
+              type: "text",
               admin: {
                 components: {
                   Field:
-                    "./src/components/fields/ConsentDocumentField.tsx#ConsentDocumentField",
+                    "./src/components/fields/OrganizationSelect.tsx#OrganizationSelect",
+                  Cell: "./src/components/fields/OrganizationCell.tsx#OrganizationCell",
                 },
+              },
+            },
+            {
+              name: "supportingOrganizationIds",
+              label: "Supporting organizations",
+              type: "text",
+              admin: {
+                components: {
+                  Field:
+                    "./src/components/fields/OrganizationSelect.tsx#OrganizationSelect",
+                  Cell: "./src/components/fields/OrganizationCell.tsx#OrganizationCell",
+                },
+              },
+              hasMany: true,
+            },
+            {
+              name: "publishedVersion",
+              label: "Published Version",
+              type: "relationship",
+              relationTo: "versions",
+              admin: {
+                readOnly: true,
+                condition: (data) => !!data?.id,
+                hidden: true,
+              },
+            },
+            {
+              name: "versions",
+              label: "Versions",
+              type: "join",
+              collection: "versions",
+              on: "service",
+              admin: {
+                allowCreate: true,
+                condition: (data) => !!data?.id,
               },
             },
           ],
         },
         {
-          name: "delegate",
-          label: "Delegates",
-          type: "group",
-          admin: {
-            hideGutter: true,
-            hidden: true,
-          },
+          label: "Settings",
           fields: [
             {
-              name: "access",
-              label: "Delegate Access",
-              type: "checkbox",
-              admin: {
-                description:
-                  "When enabled, applicants can authorize a delegate to help manage this service.",
-              },
-              defaultValue: true,
+              name: "settings",
+              label: "",
+              type: "group",
+              fields: [
+                {
+                  name: "contributors",
+                  label: "Contributors",
+                  type: "join",
+                  collection: "contributors",
+                  on: "service",
+                  admin: {
+                    condition: (data) => !!data?.id,
+                    defaultColumns: ["user", "role", "createdAt"],
+                  },
+                },
+                {
+                  name: "consent",
+                  labels: {
+                    singular: "Consent Document",
+                    plural: "Consent Documents",
+                  },
+                  type: "array",
+                  admin: {
+                    description:
+                      "Add Consent Documents by ID. Visit the Consent Manager to identify the Consent Document.",
+                    components: {
+                      RowLabel:
+                        "./src/components/fields/ConsentRowLabel.tsx#ConsentRowLabel",
+                    },
+                  },
+                  fields: [
+                    {
+                      name: "documentId",
+                      label: "Document ID",
+                      type: "text",
+                      required: true,
+                      admin: {
+                        components: {
+                          Field:
+                            "./src/components/fields/ConsentDocumentField.tsx#ConsentDocumentField",
+                        },
+                      },
+                    },
+                  ],
+                },
+                {
+                  name: "delegate",
+                  label: "Delegates",
+                  type: "group",
+                  admin: {
+                    hideGutter: true,
+                    hidden: true,
+                  },
+                  fields: [
+                    {
+                      name: "access",
+                      label: "Delegate Access",
+                      type: "checkbox",
+                      admin: {
+                        description:
+                          "When enabled, applicants can authorize a delegate to help manage this service.",
+                      },
+                      defaultValue: true,
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },

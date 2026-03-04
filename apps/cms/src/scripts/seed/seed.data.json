@@ -3,16 +3,35 @@
     {
       "id": "ff615358-eb69-4c82-870c-c950d95d6dee",
       "organizationId": "69e7c7f4-ec8c-4523-991e-5471dd0e56ab",
+      "supportingOrganizationIds": ["5743418d-7feb-4bc3-91ed-cde2c03a9be3"],
       "name": { "en": "Service One", "fr": "Service un" },
-      "description": null,
+      "description": "Internal reference: temporary financial assistance program for employment transition support.",
       "settings": {
         "consent": [
-          { "id": "6607ce1e-26fc-4190-90b8-c389a3a36e7d", "documentId": "8a3d30ad-37c0-439c-8690-87bcb38e77aa" },
-          { "id": "5aa86fc5-5c8a-4671-bf9c-5b1b4125d023", "documentId": "7aaef63c-7712-4033-b8a3-73370ed43587" },
-          { "id": "456b6131-58af-47fd-8100-dfb677667fc1", "documentId": "2a686e18-fabd-41d3-9634-ea51d104242e" },
-          { "id": "5772428a-25f3-45af-a95c-d22b8ac1a114", "documentId": "ad727499-6b04-4598-9ab2-715139ba76f0" },
-          { "id": "d944da13-5eea-4b50-bc9d-c3b1d8bb761e", "documentId": "d53f8b61-104a-4bac-9e68-7645695fa5f1" },
-          { "id": "1b6ac98c-f713-478f-9c24-3f1c7b77ff80", "documentId": "d5cdf02e-9b6c-4c5c-bfe4-8337bda7bec7" }
+          {
+            "id": "6607ce1e-26fc-4190-90b8-c389a3a36e7d",
+            "documentId": "8a3d30ad-37c0-439c-8690-87bcb38e77aa"
+          },
+          {
+            "id": "5aa86fc5-5c8a-4671-bf9c-5b1b4125d023",
+            "documentId": "7aaef63c-7712-4033-b8a3-73370ed43587"
+          },
+          {
+            "id": "456b6131-58af-47fd-8100-dfb677667fc1",
+            "documentId": "2a686e18-fabd-41d3-9634-ea51d104242e"
+          },
+          {
+            "id": "5772428a-25f3-45af-a95c-d22b8ac1a114",
+            "documentId": "ad727499-6b04-4598-9ab2-715139ba76f0"
+          },
+          {
+            "id": "d944da13-5eea-4b50-bc9d-c3b1d8bb761e",
+            "documentId": "d53f8b61-104a-4bac-9e68-7645695fa5f1"
+          },
+          {
+            "id": "1b6ac98c-f713-478f-9c24-3f1c7b77ff80",
+            "documentId": "d5cdf02e-9b6c-4c5c-bfe4-8337bda7bec7"
+          }
         ],
         "delegate": { "access": true }
       },
@@ -22,58 +41,226 @@
           "en": {
             "version": 1,
             "status": "published",
-            "categories": [],
+            "categories": ["financial", "employment"],
             "description": {
               "short": "Financial assistance to support your transition to employment.",
-              "long": "Service One provides temporary financial support to help you meet basic needs while you work toward employment or other sources of income."
+              "long": "Service One provides temporary financial support to help you meet basic needs while you work toward employment or other sources of income. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi est, bibendum at elit sit amet, pharetra volutpat justo."
             },
-            "applications": [
-              {
-                "id": "5b767746-fd24-4668-97fe-fca7669b9ed2",
-                "blockType": "form",
-                "label": "Service One Application",
-                "description": null,
-                "apiKey": "83688c02-59d7-49fc-a25a-462895e37a13",
-                "formId": "bcc7a548-1100-432d-82a3-5c0901574a0b",
-                "url": "https://chefs-dev.apps.silver.devops.gov.bc.ca/app"
+            "application": {
+              "description": {
+                "root": {
+                  "type": "root",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "format": "",
+                      "indent": 0,
+                      "version": 1,
+                      "children": [
+                        {
+                          "mode": "normal",
+                          "text": "To apply for Service One, complete the online application form below. You will need to provide identification, proof of residence, and income documentation. Processing typically takes 5-10 business days.",
+                          "type": "text",
+                          "style": "",
+                          "detail": 0,
+                          "format": 0,
+                          "version": 1
+                        }
+                      ],
+                      "direction": null,
+                      "textStyle": "",
+                      "textFormat": 0
+                    }
+                  ],
+                  "direction": null
+                }
+              },
+              "applications": [
+                {
+                  "id": "5b767746-fd24-4668-97fe-fca7669b9ed2",
+                  "blockType": "form",
+                  "online": [
+                    {
+                      "id": "a1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e",
+                      "label": "Service One Online Application",
+                      "description": "Complete this form to submit your application electronically.",
+                      "apiKey": "83688c02-59d7-49fc-a25a-462895e37a13",
+                      "formId": "bcc7a548-1100-432d-82a3-5c0901574a0b",
+                      "url": "https://chefs-dev.apps.silver.devops.gov.bc.ca/app"
+                    }
+                  ],
+                  "download": [
+                    {
+                      "id": "b2d3e4f5-a6b7-4c8d-9e0f-1a2b3c4d5e6f",
+                      "label": "Service One Printable Application",
+                      "description": "Download, print, and submit this form by mail or in person.",
+                      "url": "https://gov.bc.ca/forms/service-one-application.pdf"
+                    }
+                  ]
+                }
+              ]
+            },
+            "eligibilityCriteria": {
+              "age": {
+                "description": "Applicants must be between 19 and 64 years of age at the time of application.",
+                "values": {
+                  "min": 19,
+                  "max": 64
+                }
+              },
+              "employment": {
+                "description": "This service is available to individuals who are currently unemployed or employed part-time and seeking full-time work.",
+                "values": ["employed-part-time", "unemployed"]
+              },
+              "housing": {
+                "description": "Applicants in any housing situation may apply. Priority is given to those in temporary or unstable housing.",
+                "values": [
+                  "renter",
+                  "subsidized-housing",
+                  "temporary-accommodation",
+                  "unhoused"
+                ]
+              },
+              "income": {
+                "description": "Household and personal income must fall below the thresholds listed to qualify for assistance.",
+                "household": {
+                  "min": 0,
+                  "max": 52000
+                },
+                "personal": {
+                  "min": 0,
+                  "max": 32000
+                }
+              },
+              "relationship": {
+                "description": "All relationship statuses are eligible. Benefit amounts may vary based on household composition.",
+                "values": [
+                  "married",
+                  "common-law",
+                  "separated",
+                  "divorced",
+                  "single"
+                ]
+              },
+              "residency": {
+                "description": "Applicants must be Canadian citizens or permanent residents of British Columbia.",
+                "values": ["citizen", "permanent-resident"]
               }
-            ],
-            "contactMethods": {
-              "address": [
+            },
+            "resources": {
+              "applicationSupport": [
                 {
-                  "id": "3b954add-f465-451d-8c9b-ae2daeaca348",
-                  "label": "Visit us in person",
-                  "description": null,
-                  "addressOne": "501 Belleville St",
-                  "addressTwo": null,
-                  "city": "Victoria",
-                  "province": "British Columbia",
-                  "country": "Canada"
+                  "id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b",
+                  "label": "How to apply guide",
+                  "description": "Step-by-step instructions for completing your application.",
+                  "value": "https://gov.bc.ca/service-one/how-to-apply"
+                },
+                {
+                  "id": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c",
+                  "label": "Required documents checklist",
+                  "description": "A list of documents you will need to gather before applying.",
+                  "value": "https://gov.bc.ca/service-one/documents-checklist"
                 }
               ],
-              "email": [
+              "contactMethods": {
+                "address": [
+                  {
+                    "id": "3b954add-f465-451d-8c9b-ae2daeaca348",
+                    "label": "Main office",
+                    "description": "Visit us in person during business hours, Monday to Friday 8:30 AM - 4:30 PM.",
+                    "addressOne": "501 Belleville St",
+                    "addressTwo": "Suite 200",
+                    "city": "Victoria",
+                    "province": "British Columbia",
+                    "country": "Canada"
+                  }
+                ],
+                "email": [
+                  {
+                    "id": "a65083e6-5112-4f61-b959-d31fb24beb22",
+                    "label": "General inquiries",
+                    "description": "For questions about eligibility, applications, and program details.",
+                    "value": "inquiries@local.host"
+                  },
+                  {
+                    "id": "b76194f7-6223-4f72-ca6a-e42gc35cfc33",
+                    "label": "Report fraud",
+                    "description": "To report suspected fraud or misuse of program benefits.",
+                    "value": "fraud@local.host"
+                  }
+                ],
+                "fax": [
+                  {
+                    "id": "c87205a8-7334-4a83-db7b-f53hd46dad44",
+                    "label": "Application fax line",
+                    "description": "Fax completed applications and supporting documents.",
+                    "value": "+15559876543"
+                  }
+                ],
+                "phone": [
+                  {
+                    "id": "eded299d-bc89-4608-9834-bdca8c38f069",
+                    "label": "Service One helpline",
+                    "description": "Speak with a representative about your application or benefits.",
+                    "value": "+15551234567"
+                  },
+                  {
+                    "id": "d98316b9-8445-4b94-ec8c-a64ie57ebe55",
+                    "label": "TTY accessibility line",
+                    "description": "For deaf or hard-of-hearing callers.",
+                    "value": "+15559871234"
+                  }
+                ],
+                "web": [
+                  {
+                    "id": "47b0ecc5-f889-4a91-a89a-491dd57bf4f3",
+                    "label": "Help centre",
+                    "description": "Browse frequently asked questions and self-service resources.",
+                    "value": "https://gov.bc.ca/service-one/help"
+                  },
+                  {
+                    "id": "e09427ca-9556-4ca5-fd9d-b75jf68fcf66",
+                    "label": "Check application status",
+                    "description": "Log in to view the current status of your application.",
+                    "value": "https://gov.bc.ca/service-one/status"
+                  }
+                ]
+              },
+              "legal": [
                 {
-                  "id": "a65083e6-5112-4f61-b959-d31fb24beb22",
-                  "label": "Report fraud",
-                  "description": null,
-                  "value": "fraud@local.host"
+                  "id": "f10538db-a667-4db6-ae0e-c86kg79gda77",
+                  "label": "Employment and Assistance Act",
+                  "value": "https://gov.bc.ca/laws/employment-assistance-act"
+                },
+                {
+                  "id": "a21649ec-b778-4ec7-bf1f-d97lh80heb88",
+                  "label": "Privacy policy",
+                  "value": "https://gov.bc.ca/service-one/privacy"
                 }
               ],
-              "fax": [],
-              "phone": [
+              "recommendedReading": [
                 {
-                  "id": "eded299d-bc89-4608-9834-bdca8c38f069",
-                  "label": "Call us",
-                  "description": null,
-                  "value": "+15551234567"
-                }
-              ],
-              "web": [
+                  "id": "c38feda3-f1bf-4e91-bfd1-b24eb11a7ac4",
+                  "label": "Apply for assistance",
+                  "url": "https://gov.bc.ca/apply"
+                },
                 {
-                  "id": "47b0ecc5-f889-4a91-a89a-491dd57bf4f3",
-                  "label": "Help centre",
-                  "description": "Help and support resources",
-                  "value": "https://gov.bc.ca"
+                  "id": "244cd77a-d808-4344-b818-8a14a9a7d4a2",
+                  "label": "On assistance",
+                  "url": "https://gov.bc.ca/on-assistance"
+                },
+                {
+                  "id": "db678c15-fa26-4220-aaba-3c89ee25c77e",
+                  "label": "Payment dates",
+                  "url": "https://gov.bc.ca/payment-dates"
+                },
+                {
+                  "id": "c9d97e57-b36e-4eb9-844c-177eaf681e50",
+                  "label": "Access services",
+                  "url": "https://gov.bc.ca/access-services"
                 }
               ]
             },
@@ -324,12 +511,6 @@
                 "answer": "Quisque tincidunt nisi in tellus tincidunt dapibus. Proin laoreet nibh ultrices leo porttitor, non cursus neque fermentum. Donec facilisis, tortor facilisis euismod mollis, tellus diam eleifend odio, quis eleifend risus dolor et quam. In blandit lectus vel eros sagittis egestas. Phasellus scelerisque scelerisque velit vel ultrices. Aenean tempus condimentum magna vitae elementum. Vivamus ornare auctor pretium. Proin tristique nisi at mauris vulputate, non iaculis purus consequat."
               }
             ],
-            "resources": [
-              { "id": "c38feda3-f1bf-4e91-bfd1-b24eb11a7ac4", "label": "Apply for assistance", "url": "https://gov.bc.ca" },
-              { "id": "244cd77a-d808-4344-b818-8a14a9a7d4a2", "label": "On assistance", "url": "https://gov.bc.ca" },
-              { "id": "db678c15-fa26-4220-aaba-3c89ee25c77e", "label": "Payment dates", "url": "https://gov.bc.ca" },
-              { "id": "c9d97e57-b36e-4eb9-844c-177eaf681e50", "label": "Access services", "url": "https://gov.bc.ca" }
-            ],
             "publishedAt": "2026-02-23T23:40:59.658Z",
             "archivedAt": null
           },
@@ -338,53 +519,87 @@
               "short": "Aide financière pour soutenir votre transition vers l'emploi.",
               "long": "Le Service Un offre un soutien financier temporaire pour vous aider à subvenir à vos besoins essentiels pendant que vous travaillez à obtenir un emploi ou d'autres sources de revenus."
             },
-            "applications": [
-              {
-                "id": "5b767746-fd24-4668-97fe-fca7669b9ed2",
-                "blockType": "form",
-                "label": "Demande de Service Un",
-                "description": null,
-                "apiKey": "83688c02-59d7-49fc-a25a-462895e37a13",
-                "formId": "bcc7a548-1100-432d-82a3-5c0901574a0b",
-                "url": "https://chefs-dev.apps.silver.devops.gov.bc.ca/app"
-              }
-            ],
-            "contactMethods": {
-              "address": [
+            "application": {
+              "applications": [
                 {
-                  "id": "3b954add-f465-451d-8c9b-ae2daeaca348",
-                  "label": "Rendez-nous visite en personne",
-                  "description": null,
-                  "addressOne": "501 Belleville St",
-                  "addressTwo": null,
-                  "city": "Victoria",
-                  "province": "Colombie-Britannique",
-                  "country": "Canada"
+                  "id": "5b767746-fd24-4668-97fe-fca7669b9ed2",
+                  "blockType": "form",
+                  "online": [
+                    {
+                      "id": "a1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e",
+                      "label": "Demande de Service Un",
+                      "description": null,
+                      "apiKey": "83688c02-59d7-49fc-a25a-462895e37a13",
+                      "formId": "bcc7a548-1100-432d-82a3-5c0901574a0b",
+                      "url": "https://chefs-dev.apps.silver.devops.gov.bc.ca/app"
+                    }
+                  ],
+                  "download": []
                 }
-              ],
-              "email": [
+              ]
+            },
+            "resources": {
+              "applicationSupport": [],
+              "contactMethods": {
+                "address": [
+                  {
+                    "id": "3b954add-f465-451d-8c9b-ae2daeaca348",
+                    "label": "Rendez-nous visite en personne",
+                    "description": null,
+                    "addressOne": "501 Belleville St",
+                    "addressTwo": null,
+                    "city": "Victoria",
+                    "province": "Colombie-Britannique",
+                    "country": "Canada"
+                  }
+                ],
+                "email": [
+                  {
+                    "id": "a65083e6-5112-4f61-b959-d31fb24beb22",
+                    "label": "Signaler une fraude",
+                    "description": null,
+                    "value": "fraud@local.host"
+                  }
+                ],
+                "fax": [],
+                "phone": [
+                  {
+                    "id": "eded299d-bc89-4608-9834-bdca8c38f069",
+                    "label": "Appelez-nous",
+                    "description": null,
+                    "value": "+15551234567"
+                  }
+                ],
+                "web": [
+                  {
+                    "id": "47b0ecc5-f889-4a91-a89a-491dd57bf4f3",
+                    "label": "Centre d'aide",
+                    "description": "Ressources d'aide et de soutien",
+                    "value": "https://gov.bc.ca"
+                  }
+                ]
+              },
+              "legal": [],
+              "recommendedReading": [
                 {
-                  "id": "a65083e6-5112-4f61-b959-d31fb24beb22",
-                  "label": "Signaler une fraude",
-                  "description": null,
-                  "value": "fraud@local.host"
-                }
-              ],
-              "fax": [],
-              "phone": [
+                  "id": "c38feda3-f1bf-4e91-bfd1-b24eb11a7ac4",
+                  "label": "Faire une demande d'aide",
+                  "url": "https://gov.bc.ca"
+                },
                 {
-                  "id": "eded299d-bc89-4608-9834-bdca8c38f069",
-                  "label": "Appelez-nous",
-                  "description": null,
-                  "value": "+15551234567"
-                }
-              ],
-              "web": [
+                  "id": "244cd77a-d808-4344-b818-8a14a9a7d4a2",
+                  "label": "En cours d'aide",
+                  "url": "https://gov.bc.ca"
+                },
                 {
-                  "id": "47b0ecc5-f889-4a91-a89a-491dd57bf4f3",
-                  "label": "Centre d'aide",
-                  "description": "Ressources d'aide et de soutien",
-                  "value": "https://gov.bc.ca"
+                  "id": "db678c15-fa26-4220-aaba-3c89ee25c77e",
+                  "label": "Dates de paiement",
+                  "url": "https://gov.bc.ca"
+                },
+                {
+                  "id": "c9d97e57-b36e-4eb9-844c-177eaf681e50",
+                  "label": "Accéder aux services",
+                  "url": "https://gov.bc.ca"
                 }
               ]
             },
@@ -604,12 +819,6 @@
                 "question": "Comment puis-je mettre à jour mes renseignements sur la page de profil?",
                 "answer": "Quisque tincidunt nisi in tellus tincidunt dapibus. Proin laoreet nibh ultrices leo porttitor, non cursus neque fermentum. Donec facilisis, tortor facilisis euismod mollis, tellus diam eleifend odio, quis eleifend risus dolor et quam. In blandit lectus vel eros sagittis egestas. Phasellus scelerisque scelerisque velit vel ultrices. Aenean tempus condimentum magna vitae elementum. Vivamus ornare auctor pretium. Proin tristique nisi at mauris vulputate, non iaculis purus consequat."
               }
-            ],
-            "resources": [
-              { "id": "c38feda3-f1bf-4e91-bfd1-b24eb11a7ac4", "label": "Faire une demande d'aide", "url": "https://gov.bc.ca" },
-              { "id": "244cd77a-d808-4344-b818-8a14a9a7d4a2", "label": "En cours d'aide", "url": "https://gov.bc.ca" },
-              { "id": "db678c15-fa26-4220-aaba-3c89ee25c77e", "label": "Dates de paiement", "url": "https://gov.bc.ca" },
-              { "id": "c9d97e57-b36e-4eb9-844c-177eaf681e50", "label": "Accéder aux services", "url": "https://gov.bc.ca" }
             ]
           }
         }

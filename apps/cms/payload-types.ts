@@ -79,7 +79,7 @@ export interface Config {
   collectionsJoins: {
     services: {
       versions: 'versions';
-      contributors: 'contributors';
+      'settings.contributors': 'contributors';
     };
   };
   collectionsSelect: {
@@ -129,28 +129,26 @@ export interface UserAuthOperations {
  */
 export interface Service {
   id: string;
-  organizationId?: string | null;
   name: string;
   slug?: string | null;
   /**
    * This field is not visible to end users.
    */
   description?: string | null;
+  organizationId?: string | null;
+  supportingOrganizationIds?: string[] | null;
   publishedVersion?: (string | null) | Version;
   versions?: {
     docs?: (string | Version)[];
     hasNextPage?: boolean;
     totalDocs?: number;
   };
-  contributors?: {
-    docs?: (string | Contributor)[];
-    hasNextPage?: boolean;
-    totalDocs?: number;
-  };
-  /**
-   * Additional service configuration
-   */
   settings?: {
+    contributors?: {
+      docs?: (string | Contributor)[];
+      hasNextPage?: boolean;
+      totalDocs?: number;
+    };
     /**
      * Add Consent Documents by ID. Visit the Consent Manager to identify the Consent Document.
      */
@@ -176,9 +174,6 @@ export interface Service {
  */
 export interface Version {
   id: string;
-  service: string | Service;
-  status?: ('draft' | 'published' | 'archived') | null;
-  version?: number | null;
   categories?:
     | (
         | 'culture'
@@ -197,89 +192,6 @@ export interface Version {
     short?: string | null;
     long?: string | null;
   };
-  /**
-   * Add applications for this service
-   */
-  applications?:
-    | (
-        | {
-            label?: string | null;
-            description?: string | null;
-            apiKey?: string | null;
-            formId?: string | null;
-            url?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'form';
-          }
-        | {
-            label?: string | null;
-            description?: string | null;
-            url?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'link';
-          }
-        | {
-            label?: string | null;
-            description?: string | null;
-            method?: ('GET' | 'POST') | null;
-            url?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'workflow';
-          }
-      )[]
-    | null;
-  /**
-   * Add contact methods for users to communicate about the service.
-   */
-  contactMethods?: {
-    address?:
-      | {
-          label: string;
-          description?: string | null;
-          addressOne: string;
-          addressTwo?: string | null;
-          city: string;
-          province: string;
-          country: string;
-          id?: string | null;
-        }[]
-      | null;
-    email?:
-      | {
-          label: string;
-          description?: string | null;
-          value: string;
-          id?: string | null;
-        }[]
-      | null;
-    fax?:
-      | {
-          label: string;
-          description?: string | null;
-          value: string;
-          id?: string | null;
-        }[]
-      | null;
-    phone?:
-      | {
-          label: string;
-          description?: string | null;
-          value: string;
-          id?: string | null;
-        }[]
-      | null;
-    web?:
-      | {
-          label: string;
-          description?: string | null;
-          value: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
   content?: {
     root: {
       type: string;
@@ -296,6 +208,145 @@ export interface Version {
     [k: string]: unknown;
   } | null;
   /**
+   * Connect an application to this service.
+   */
+  application?: {
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    applications?:
+      | (
+          | {
+              /**
+               * If applicable, add a downloadable application.
+               */
+              online?:
+                | {
+                    label?: string | null;
+                    description?: string | null;
+                    apiKey?: string | null;
+                    formId?: string | null;
+                    url?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              /**
+               * If applicable, add a downloadable application.
+               */
+              download?:
+                | {
+                    label?: string | null;
+                    description?: string | null;
+                    url?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'form';
+            }
+          | {
+              label?: string | null;
+              description?: string | null;
+              url?: string | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'link';
+            }
+          | {
+              label?: string | null;
+              description?: string | null;
+              method?: ('GET' | 'POST') | null;
+              url?: string | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'workflow';
+            }
+        )[]
+      | null;
+  };
+  /**
+   * Details you provide here will help users find your service.
+   */
+  eligibilityCriteria?: {
+    /**
+     * If the service has any age requirements, add them below.
+     */
+    age?: {
+      description?: string | null;
+      values?: {
+        min?: number | null;
+        max?: number | null;
+      };
+    };
+    /**
+     * If the service has any employment requirements, add them below.
+     */
+    employment?: {
+      description?: string | null;
+      /**
+       * Select all values which apply to this service.
+       */
+      values?: ('employed-full-time' | 'employed-part-time' | 'self-employed' | 'unemployed')[] | null;
+    };
+    /**
+     * If the service has any shelter requirements, add them below.
+     */
+    housing?: {
+      description?: string | null;
+      /**
+       * Select all values which apply to this service.
+       */
+      values?: ('home-owner' | 'renter' | 'subsidized-housing' | 'temporary-accommodation' | 'unhoused')[] | null;
+    };
+    /**
+     * If the service has any income level requirements, add them below.
+     */
+    income?: {
+      description?: string | null;
+      household?: {
+        min?: number | null;
+        max?: number | null;
+      };
+      personal?: {
+        min?: number | null;
+        max?: number | null;
+      };
+    };
+    /**
+     * If the service has any relationship requirements, add them below
+     */
+    relationship?: {
+      description?: string | null;
+      /**
+       * Select all values which apply to this service.
+       */
+      values?: ('married' | 'common-law' | 'separated' | 'divorced' | 'single')[] | null;
+    };
+    /**
+     * If the service has any residency requirements, add them below.
+     */
+    residency?: {
+      description?: string | null;
+      /**
+       * Select all values which apply to this service.
+       */
+      values?: ('citizen' | 'permanent-resident' | 'work-permit' | 'student-permit' | 'temporary-resident')[] | null;
+    };
+  };
+  /**
    * Provide quick solutions to commonly asked questions.
    */
   faq?:
@@ -308,15 +359,88 @@ export interface Version {
   /**
    * Add resources which can provide more detailed information about the service.
    */
-  resources?:
-    | {
-        label?: string | null;
-        url?: string | null;
-        id?: string | null;
-      }[]
-    | null;
+  resources?: {
+    applicationSupport?:
+      | {
+          label: string;
+          description?: string | null;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Add contact methods for users to communicate about the service.
+     */
+    contactMethods?: {
+      address?:
+        | {
+            label: string;
+            description?: string | null;
+            addressOne: string;
+            addressTwo?: string | null;
+            city: string;
+            province: string;
+            country: string;
+            id?: string | null;
+          }[]
+        | null;
+      email?:
+        | {
+            label: string;
+            description?: string | null;
+            value: string;
+            id?: string | null;
+          }[]
+        | null;
+      fax?:
+        | {
+            label: string;
+            description?: string | null;
+            value: string;
+            id?: string | null;
+          }[]
+        | null;
+      phone?:
+        | {
+            label: string;
+            description?: string | null;
+            value: string;
+            id?: string | null;
+          }[]
+        | null;
+      web?:
+        | {
+            label: string;
+            description?: string | null;
+            value: string;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    legal?:
+      | {
+          label: string;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    otherServices?: {
+      recommendedServices?: (string | Service)[] | null;
+      relatedServices?: (string | Service)[] | null;
+    };
+    recommendedReading?:
+      | {
+          label?: string | null;
+          url?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
   publishedAt?: string | null;
   archivedAt?: string | null;
+  service: string | Service;
+  status?: ('draft' | 'published' | 'archived') | null;
+  version?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -433,16 +557,17 @@ export interface PayloadMigration {
  * via the `definition` "services_select".
  */
 export interface ServicesSelect<T extends boolean = true> {
-  organizationId?: T;
   name?: T;
   slug?: T;
   description?: T;
+  organizationId?: T;
+  supportingOrganizationIds?: T;
   publishedVersion?: T;
   versions?: T;
-  contributors?: T;
   settings?:
     | T
     | {
+        contributors?: T;
         consent?:
           | T
           | {
@@ -463,9 +588,6 @@ export interface ServicesSelect<T extends boolean = true> {
  * via the `definition` "versions_select".
  */
 export interface VersionsSelect<T extends boolean = true> {
-  service?: T;
-  status?: T;
-  version?: T;
   categories?: T;
   description?:
     | T
@@ -473,89 +595,115 @@ export interface VersionsSelect<T extends boolean = true> {
         short?: T;
         long?: T;
       };
-  applications?:
-    | T
-    | {
-        form?:
-          | T
-          | {
-              label?: T;
-              description?: T;
-              apiKey?: T;
-              formId?: T;
-              url?: T;
-              id?: T;
-              blockName?: T;
-            };
-        link?:
-          | T
-          | {
-              label?: T;
-              description?: T;
-              url?: T;
-              id?: T;
-              blockName?: T;
-            };
-        workflow?:
-          | T
-          | {
-              label?: T;
-              description?: T;
-              method?: T;
-              url?: T;
-              id?: T;
-              blockName?: T;
-            };
-      };
-  contactMethods?:
-    | T
-    | {
-        address?:
-          | T
-          | {
-              label?: T;
-              description?: T;
-              addressOne?: T;
-              addressTwo?: T;
-              city?: T;
-              province?: T;
-              country?: T;
-              id?: T;
-            };
-        email?:
-          | T
-          | {
-              label?: T;
-              description?: T;
-              value?: T;
-              id?: T;
-            };
-        fax?:
-          | T
-          | {
-              label?: T;
-              description?: T;
-              value?: T;
-              id?: T;
-            };
-        phone?:
-          | T
-          | {
-              label?: T;
-              description?: T;
-              value?: T;
-              id?: T;
-            };
-        web?:
-          | T
-          | {
-              label?: T;
-              description?: T;
-              value?: T;
-              id?: T;
-            };
-      };
   content?: T;
+  application?:
+    | T
+    | {
+        description?: T;
+        applications?:
+          | T
+          | {
+              form?:
+                | T
+                | {
+                    online?:
+                      | T
+                      | {
+                          label?: T;
+                          description?: T;
+                          apiKey?: T;
+                          formId?: T;
+                          url?: T;
+                          id?: T;
+                        };
+                    download?:
+                      | T
+                      | {
+                          label?: T;
+                          description?: T;
+                          url?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                    blockName?: T;
+                  };
+              link?:
+                | T
+                | {
+                    label?: T;
+                    description?: T;
+                    url?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+              workflow?:
+                | T
+                | {
+                    label?: T;
+                    description?: T;
+                    method?: T;
+                    url?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+            };
+      };
+  eligibilityCriteria?:
+    | T
+    | {
+        age?:
+          | T
+          | {
+              description?: T;
+              values?:
+                | T
+                | {
+                    min?: T;
+                    max?: T;
+                  };
+            };
+        employment?:
+          | T
+          | {
+              description?: T;
+              values?: T;
+            };
+        housing?:
+          | T
+          | {
+              description?: T;
+              values?: T;
+            };
+        income?:
+          | T
+          | {
+              description?: T;
+              household?:
+                | T
+                | {
+                    min?: T;
+                    max?: T;
+                  };
+              personal?:
+                | T
+                | {
+                    min?: T;
+                    max?: T;
+                  };
+            };
+        relationship?:
+          | T
+          | {
+              description?: T;
+              values?: T;
+            };
+        residency?:
+          | T
+          | {
+              description?: T;
+              values?: T;
+            };
+      };
   faq?:
     | T
     | {
@@ -566,12 +714,88 @@ export interface VersionsSelect<T extends boolean = true> {
   resources?:
     | T
     | {
-        label?: T;
-        url?: T;
-        id?: T;
+        applicationSupport?:
+          | T
+          | {
+              label?: T;
+              description?: T;
+              value?: T;
+              id?: T;
+            };
+        contactMethods?:
+          | T
+          | {
+              address?:
+                | T
+                | {
+                    label?: T;
+                    description?: T;
+                    addressOne?: T;
+                    addressTwo?: T;
+                    city?: T;
+                    province?: T;
+                    country?: T;
+                    id?: T;
+                  };
+              email?:
+                | T
+                | {
+                    label?: T;
+                    description?: T;
+                    value?: T;
+                    id?: T;
+                  };
+              fax?:
+                | T
+                | {
+                    label?: T;
+                    description?: T;
+                    value?: T;
+                    id?: T;
+                  };
+              phone?:
+                | T
+                | {
+                    label?: T;
+                    description?: T;
+                    value?: T;
+                    id?: T;
+                  };
+              web?:
+                | T
+                | {
+                    label?: T;
+                    description?: T;
+                    value?: T;
+                    id?: T;
+                  };
+            };
+        legal?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              id?: T;
+            };
+        otherServices?:
+          | T
+          | {
+              recommendedServices?: T;
+              relatedServices?: T;
+            };
+        recommendedReading?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+              id?: T;
+            };
       };
   publishedAt?: T;
   archivedAt?: T;
+  service?: T;
+  status?: T;
+  version?: T;
   updatedAt?: T;
   createdAt?: T;
 }

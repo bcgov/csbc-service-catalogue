@@ -50,6 +50,7 @@ interface SeedData {
   services: Array<{
     id: string;
     organizationId: string;
+    supportingOrganizationIds?: string[];
     name: { en: string; fr: string };
     description: string | null;
     settings: {
@@ -100,6 +101,7 @@ async function seed() {
         data: {
           id: svc.id,
           organizationId: svc.organizationId,
+          supportingOrganizationIds: svc.supportingOrganizationIds,
           name: svc.name.en,
           slug,
           description: svc.description,

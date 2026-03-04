@@ -26,6 +26,7 @@ import { StrikethroughFeatureClient as StrikethroughFeatureClient_e70f5e05f09f93
 import { UnderlineFeatureClient as UnderlineFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
+import { ServiceRelationshipSelect as ServiceRelationshipSelect_b6d55ebd82061fe4864f469dc9bdfb7b } from '../../../../src/components/fields/ServiceRelationshipSelect.tsx'
 import { VersionBadge as VersionBadge_d8e3a88465738b3a26833b8dfb56bfaa } from '../../../../src/components/VersionBadge.tsx'
 import { StatusBadge as StatusBadge_498e21874c6406ff8b8696f9cf4b8cb8 } from '../../../../src/components/StatusBadge.tsx'
 import { ArchiveButton as ArchiveButton_cb2dcfe77385d72165d47b88be9e8338 } from '../../../../src/components/ArchiveButton.tsx'
@@ -64,6 +65,7 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#UnderlineFeatureClient": UnderlineFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
+  "./src/components/fields/ServiceRelationshipSelect.tsx#ServiceRelationshipSelect": ServiceRelationshipSelect_b6d55ebd82061fe4864f469dc9bdfb7b,
   "./src/components/VersionBadge.tsx#VersionBadge": VersionBadge_d8e3a88465738b3a26833b8dfb56bfaa,
   "./src/components/StatusBadge.tsx#StatusBadge": StatusBadge_498e21874c6406ff8b8696f9cf4b8cb8,
   "./src/components/ArchiveButton.tsx#ArchiveButton": ArchiveButton_cb2dcfe77385d72165d47b88be9e8338,
