@@ -511,6 +511,38 @@
                 "answer": "Quisque tincidunt nisi in tellus tincidunt dapibus. Proin laoreet nibh ultrices leo porttitor, non cursus neque fermentum. Donec facilisis, tortor facilisis euismod mollis, tellus diam eleifend odio, quis eleifend risus dolor et quam. In blandit lectus vel eros sagittis egestas. Phasellus scelerisque scelerisque velit vel ultrices. Aenean tempus condimentum magna vitae elementum. Vivamus ornare auctor pretium. Proin tristique nisi at mauris vulputate, non iaculis purus consequat."
               }
             ],
+            "products": [
+              {
+                "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+                "label": "Standard Application",
+                "description": "Basic application processing with standard turnaround time.",
+                "price": 25.0
+              },
+              {
+                "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+                "label": "Expedited Processing",
+                "description": "Priority processing with faster turnaround for urgent requests.",
+                "price": 75.0
+              },
+              {
+                "id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+                "label": "Document Certification",
+                "description": "Certified copies of approved documents for third-party verification.",
+                "price": 15.0
+              }
+            ],
+            "processingTime": {
+              "values": {
+                "min": {
+                  "value": 5,
+                  "unit": "days"
+                },
+                "max": {
+                  "value": 4,
+                  "unit": "weeks"
+                }
+              }
+            },
             "publishedAt": "2026-02-23T23:40:59.658Z",
             "archivedAt": null
           },
@@ -518,6 +550,38 @@
             "description": {
               "short": "Aide financière pour soutenir votre transition vers l'emploi.",
               "long": "Le Service Un offre un soutien financier temporaire pour vous aider à subvenir à vos besoins essentiels pendant que vous travaillez à obtenir un emploi ou d'autres sources de revenus."
+            },
+            "products": [
+              {
+                "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+                "label": "Standard Application",
+                "description": "Basic application processing with standard turnaround time.",
+                "price": 25.0
+              },
+              {
+                "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+                "label": "Expedited Processing",
+                "description": "Priority processing with faster turnaround for urgent requests.",
+                "price": 75.0
+              },
+              {
+                "id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+                "label": "Document Certification",
+                "description": "Certified copies of approved documents for third-party verification.",
+                "price": 15.0
+              }
+            ],
+            "processingTime": {
+              "values": {
+                "min": {
+                  "value": 5,
+                  "unit": "days"
+                },
+                "max": {
+                  "value": 4,
+                  "unit": "weeks"
+                }
+              }
             },
             "application": {
               "applications": [

@@ -1,4 +1,9 @@
-import { CollectionConfig } from "payload";
+import {
+  CollectionConfig,
+  NumberField,
+  SelectField,
+  ValidateOptions,
+} from "payload";
 
 import { validateE164 } from "../hooks/validateE164.hook";
 import { validateUrl } from "../hooks/validateUrl.hook";
@@ -337,6 +342,185 @@ const Versions: CollectionConfig = {
                     },
                   ],
                   maxRows: 1,
+                },
+              ],
+            },
+            {
+              name: "products",
+              label: "Products / Pricing",
+              type: "array",
+              fields: [
+                {
+                  name: "label",
+                  label: "Label",
+                  type: "text",
+                  required: true,
+                  localized: true,
+                },
+                {
+                  name: "description",
+                  type: "textarea",
+                  label: "Description",
+                  localized: true,
+                },
+                {
+                  name: "price",
+                  label: "Price",
+                  type: "number",
+                  required: true,
+                  localized: true,
+                  validate: (
+                    value: number | null | undefined,
+                    options: ValidateOptions<
+                      unknown,
+                      unknown,
+                      NumberField,
+                      number
+                    >,
+                  ) => {
+                    if (value == null) {
+                      return options.required ? "Price is required" : true;
+                    }
+
+                    if (value < 0) {
+                      return "Price cannot be negative";
+                    }
+
+                    if (Math.round(value * 100) / 100 !== value) {
+                      return "Price must have no more than 2 decimal places";
+                    }
+
+                    return true;
+                  },
+                  admin: {
+                    description: "Price in dollars (e.g. 25.00)",
+                  },
+                },
+              ],
+            },
+            {
+              name: "processingTime",
+              label: "Processing Time",
+              type: "group",
+              admin: {
+                description:
+                  "Add an estimated processing time so applicants have an idea of how long they must wait from application to service delivery.",
+              },
+              fields: [
+                {
+                  name: "values",
+                  label: "",
+                  type: "group",
+                  admin: {
+                    hideGutter: true,
+                  },
+                  fields: [
+                    {
+                      type: "row",
+                      fields: [
+                        {
+                          name: "min",
+                          label: "Minimum processing time",
+                          type: "group",
+                          admin: {
+                            hideGutter: true,
+                          },
+                          fields: [
+                            {
+                              type: "row",
+                              fields: [
+                                {
+                                  name: "value",
+                                  label: "Value",
+                                  type: "number",
+                                },
+                                {
+                                  name: "unit",
+                                  label: "Unit",
+                                  type: "select",
+                                  options: [
+                                    { label: "Minutes", value: "minutes" },
+                                    { label: "Hours", value: "hours" },
+                                    { label: "Days", value: "days" },
+                                    { label: "Weeks", value: "weeks" },
+                                    { label: "Months", value: "months" },
+                                    { label: "Years", value: "years" },
+                                  ],
+                                  validate: (
+                                    value: string | null | undefined,
+                                    options: ValidateOptions<
+                                      unknown,
+                                      { value?: number | null },
+                                      SelectField,
+                                      string
+                                    >,
+                                  ) => {
+                                    if (
+                                      options.siblingData?.value != null &&
+                                      !value
+                                    ) {
+                                      return "Unit is required when a value is provided";
+                                    }
+                                    return true;
+                                  },
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        {
+                          name: "max",
+                          label: "Maximum processing time",
+                          type: "group",
+                          admin: {
+                            hideGutter: true,
+                          },
+                          fields: [
+                            {
+                              type: "row",
+                              fields: [
+                                {
+                                  name: "value",
+                                  label: "Value",
+                                  type: "number",
+                                },
+                                {
+                                  name: "unit",
+                                  label: "Unit",
+                                  type: "select",
+                                  options: [
+                                    { label: "Minutes", value: "minutes" },
+                                    { label: "Hours", value: "hours" },
+                                    { label: "Days", value: "days" },
+                                    { label: "Weeks", value: "weeks" },
+                                    { label: "Months", value: "months" },
+                                    { label: "Years", value: "years" },
+                                  ],
+                                  validate: (
+                                    value: string | null | undefined,
+                                    options: ValidateOptions<
+                                      unknown,
+                                      { value?: number | null },
+                                      SelectField,
+                                      string
+                                    >,
+                                  ) => {
+                                    if (
+                                      options.siblingData?.value != null &&
+                                      !value
+                                    ) {
+                                      return "Unit is required when a value is provided";
+                                    }
+                                    return true;
+                                  },
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
                 },
               ],
             },

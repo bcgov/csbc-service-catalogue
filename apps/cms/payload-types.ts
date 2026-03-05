@@ -277,6 +277,32 @@ export interface Version {
         )[]
       | null;
   };
+  products?:
+    | {
+        label: string;
+        description?: string | null;
+        /**
+         * Price in dollars (e.g. 25.00)
+         */
+        price: number;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Add an estimated processing time so applicants have an idea of how long they must wait from application to service delivery.
+   */
+  processingTime?: {
+    values?: {
+      min?: {
+        value?: number | null;
+        unit?: ('minutes' | 'hours' | 'days' | 'weeks' | 'months' | 'years') | null;
+      };
+      max?: {
+        value?: number | null;
+        unit?: ('minutes' | 'hours' | 'days' | 'weeks' | 'months' | 'years') | null;
+      };
+    };
+  };
   /**
    * Details you provide here will help users find your service.
    */
@@ -645,6 +671,34 @@ export interface VersionsSelect<T extends boolean = true> {
                     url?: T;
                     id?: T;
                     blockName?: T;
+                  };
+            };
+      };
+  products?:
+    | T
+    | {
+        label?: T;
+        description?: T;
+        price?: T;
+        id?: T;
+      };
+  processingTime?:
+    | T
+    | {
+        values?:
+          | T
+          | {
+              min?:
+                | T
+                | {
+                    value?: T;
+                    unit?: T;
+                  };
+              max?:
+                | T
+                | {
+                    value?: T;
+                    unit?: T;
                   };
             };
       };
