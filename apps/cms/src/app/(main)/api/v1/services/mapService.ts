@@ -1,40 +1,21 @@
-interface VersionDoc {
-  id: string;
-  version: number;
-  applications: unknown;
-  categories: unknown;
-  description: unknown;
-  contactMethods: unknown;
-  content: unknown;
-  faq: unknown;
-  resources: unknown;
-  publishedAt: string;
-  updatedAt: string;
-  createdAt: string;
-}
+import type { Version, Service } from "../../../../../../payload-types";
 
-export interface ServiceDoc {
-  id: string;
-  organizationId: string;
-  name: string;
-  slug: string;
-  publishedVersion: VersionDoc | string | null;
-  settings: unknown;
-}
+export type ServiceDoc = Omit<Service, "publishedVersion"> & {
+  publishedVersion: Version | string | null;
+};
 
 export function mapService(service: ServiceDoc) {
-  const version = service.publishedVersion as VersionDoc;
+  const version = service.publishedVersion as Version;
   return {
     id: service.id,
     organizationId: service.organizationId,
     versionId: version.id,
     name: service.name,
     slug: service.slug,
-    version: version.version,
-    applications: version.applications,
+    application: version.application,
     categories: version.categories,
     description: version.description,
-    contactMethods: version.contactMethods,
+    contactMethods: version.resources?.contactMethods,
     content: version.content,
     faq: version.faq,
     resources: version.resources,
